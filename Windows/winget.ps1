@@ -1,3 +1,11 @@
+# winget
+# Boxstarter
+# Chocolatey
+
+Disable-UAC
+
+
+
 # 패키지 검색하기
 # winget search
 
@@ -18,6 +26,19 @@ winget install Automattic.Simplenote
 winget install WinMerge.WinMerge
 winget install Microsoft.VisualStudioCode
 winget install Microsoft.VisualStudioCode.Insiders
+winget install Git.Git
+winget install Python.Python.3.12
+winget install Anaconda.Anaconda3
+
+
+# 터미널 껐다 켜야 함
+# poetry
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+
+# PATH에 추가 C:\Users\jwseo\AppData\Roaming\Python\Scripts
+
+winget install 
+winget install 
 winget install 
 winget install 
 winget install 
