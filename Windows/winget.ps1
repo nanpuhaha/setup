@@ -29,7 +29,7 @@ winget install Microsoft.VisualStudioCode.Insiders
 winget install Git.Git
 winget install Python.Python.3.12
 winget install Anaconda.Anaconda3
-
+winget install lencx.ChatGPT
 
 # 터미널 껐다 켜야 함
 # poetry
