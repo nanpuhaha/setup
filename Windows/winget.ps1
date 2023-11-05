@@ -16,7 +16,10 @@ winget install GitHub.GitHubDesktop
 winget install SublimeHQ.SublimeText.4
 
 
-winget install NGWIN.PicPick  # PicPick은 버전이 좀 느림
+winget install -e RandyRants.SharpKeys # Key Remap # https://github.com/randyrants/sharpkeys
+
+
+winget install NGWIN.PicPick  # PicPick은 버전이 좀 뒤쳐짐
 winget install Notion.Notion
 winget install Bandisoft.Bandizip
 winget install 9PH84MZPJ931 # Send Anywhere - Make file transfers faster
