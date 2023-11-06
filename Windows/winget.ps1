@@ -4,7 +4,11 @@
 
 Disable-UAC
 
+# winget install -e 의 -e는 --exact. 대/소문자 구분 검사를 포함하여 쿼리에서 정확한 문자열을 사용합니다. 하위 문자열의 기본 동작을 사용하지 않습니다.
 
+
+# https://winstall.app/
+# https://winget.run/
 
 # 패키지 검색하기
 # winget search
@@ -39,6 +43,24 @@ winget install lencx.ChatGPT
 (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
 
 # PATH에 추가 C:\Users\jwseo\AppData\Roaming\Python\Scripts
+
+
+winget install -e --id=Microsoft.Edge
+winget install -e --id=Microsoft.Edge.Canary
+winget install -e --id=Microsoft.Edge.Dev
+
+winget install -e --id Google.Chrome
+winget install -e --id Google.Chrome.Beta
+winget install -e --id Google.Chrome.Dev
+winget install -e --id Google.Chrome.Canary
+
+winget install -e --id Google.ChromeRemoteDesktop
+
+# winget install -e --id Mozilla.Firefox
+# winget install -e --id Mozilla.Firefox.Beta
+# winget install -e --id Mozilla.Firefox.DeveloperEdition
+# winget install -e --id Mozilla.Firefox.ESR
+# winget install -e --id Mozilla.Firefox.Nightly
 
 winget install 
 winget install 
