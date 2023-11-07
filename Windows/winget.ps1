@@ -62,8 +62,101 @@ winget install -e --id Google.ChromeRemoteDesktop
 # winget install -e --id Mozilla.Firefox.ESR
 # winget install -e --id Mozilla.Firefox.Nightly
 
-winget install 
-winget install 
-winget install 
-winget install 
-winget install 
+winget install -e --id Zoom.Zoom
+winget install -e --id zhaopengme.gitnote
+# winget install -e --id zokugun.MrCode
+
+
+winget install -e --id zyedidia.micro
+winget install -e --id yt-dlp.yt-dlp
+winget install -e --id yt-dlg.yt-dlg
+winget install -e --id youtube-dl.youtube-dl
+winget install -e --id yetone.OpenAITranslator
+winget install -e --id YmSoft.Nalgaeset
+winget install -e --id Yarn.Yarn
+winget install -e --id XnSoft.XnView.Classic
+winget install -e --id XnSoft.XnConvert
+winget install -e --id XnSoft.XnViewMP
+winget install -e --id=Google.Chrome
+winget install -e --id=Google.Chrome.Dev
+winget install -e --id=Front.scrcpy+
+winget install -e --id=blacktop.ipsw
+winget install -e --id=Postman.Postman.Canary
+winget install -e --id=Postman.Postman.DesktopAgent
+winget install -e --id=SmartSoft.SmartFTP
+winget install -e --id=StartIsBack.StartAllBack
+winget install -e --id=Postman.Postman
+winget install -e --id=Telegram.TelegramDesktop
+winget install -e --id=Iterate.Cyberduck
+winget install -e --id=Iterate.MountainDuck
+winget install -e --id=AnyDeskSoftwareGmbH.AnyDesk
+winget install -e --id=Microsoft.PowerBI
+winget install -e --id=Anki.Anki
+winget install -e --id=Olivia.VIA
+winget install -e --id=calibre.calibre
+winget install -e --id=ShiningLight.OpenSSL
+winget install -e --id=GitHub.cli
+winget install -e --id=Google.GoogleDrive
+winget install -e --id=GitHub.GitHubDesktop
+winget install -e --id=GitHub.GitHubDesktop.Beta
+winget install -e --id=Frontesque.scrcpy+
+winget install -e --id=ScooterSoftware.BeyondCompare4
+winget install -e --id=PhraseExpress.PhraseExpress
+winget install -e --id=DigiDNA.iMazing
+winget install -e --id=eTeks.SweetHome3D
+winget install -e --id=CodecGuide.K-LiteCodecPack.Full
+winget install -e --id=Streamlink.Streamlink.TwitchGui
+winget install -e --id=Streamlink.Streamlink
+winget install -e --id=Opera.Opera
+winget install -e --id=cURL.cURL
+winget install -e --id=StefansTools.grepWin
+winget install -e --id=Anaconda.Miniconda3
+winget install -e --id=Microsoft.PowerToys
+winget install -e --id=Dropbox.Dropbox
+winget install -e --id=JLC.EasyEDA
+winget install -e --id=JLC.EasyEDA.Pro
+winget install -e --id=CrystalDewWorld.CrystalDiskInfo
+winget install -e --id=CrystalDewWorld.CrystalDiskMark
+winget install -e --id=OpenJS.NodeJS
+winget install -e --id=OpenJS.NodeJS.LTS
+winget install -e --id=WinMerge.WinMerge
+winget install -e --id=TeamViewer.TeamViewer.Host
+winget install -e --id=Docker.DockerDesktop
+winget install -e --id=Logitech.OptionsPlus
+winget install -e --id=Logitech.Options
+winget install -e --id=Logitech.UnifyingSoftware
+winget install -e --id=Sigil-Ebook.Sigil
+winget install -e --id=Microsoft.DevHome
+winget install -e --id=LocalSend.LocalSend
+winget install -e --id=Figma.Figma
+winget install -e --id=Notion.Notion
+winget install -e --id=SlackTechnologies.Slack
+winget install -e --id=Microsoft.EdgeDriver
+winget install -e --id=Apple.iTunes
+winget install -e --id=Microsoft.VisualStudioCode.CLI
+winget install -e --id=UB-Mannheim.TesseractOCR
+winget install -e --id=Oracle.JDK.21
+winget install -e --id=Chocolatey.Chocolatey
+winget install -e --id=Notepad++.Notepad++
+winget install -e --id=Tonec.InternetDownloadManager
+winget install -e --id=Rufus.Rufus
+winget install -e --id=BlenderFoundation.Blender
+winget install -e --id=Rclone.Rclone
+winget install -e --id=MongoDB.Compass.Full
+winget install -e --id=JGraph.Draw
+winget install -e --id=GoLang.Go
+winget install -e --id=Logitech.SetPoint
+winget install -e --id=MediaArea.MediaInfo.GUI
+winget install -e --id=junegunn.fzf
+winget install -e --id=1MHz.Knotes
+winget install -e --id=Obsidian.Obsidian
+winget install -e --id=BinanceTech.Binance
+winget install -e --id=ImageMagick.ImageMagick
+winget install -e --id=HandBrake.HandBrake
+winget install -e --id=HandBrake.HandBrake.CLI
+winget install -e --id=Syncthing.Syncthing
+winget install -e --id=Anaconda.Anaconda3
+winget install -e --id=tailscale.tailscale
+winget install -e --id=Python.Python.3.11
+winget install -e --id=Python.Python.3.12
+winget install -e --id=KiCad.KiCad
