@@ -45,6 +45,16 @@ winget install lencx.ChatGPT
 # PATH에 추가 C:\Users\jwseo\AppData\Roaming\Python\Scripts
 
 
+
+winget install ImageGlass
+winget install qView
+winget install qimgv
+winget install nomacs
+winget install PicView 
+winget install -e --id=IrfanSkiljan.IrfanView 
+winget install -e --id=IrfanSkiljan.IrfanView.PlugIns
+winget install Visum Photo Viewer
+
 winget install -e --id=Microsoft.Edge
 winget install -e --id=Microsoft.Edge.Canary
 winget install -e --id=Microsoft.Edge.Dev
