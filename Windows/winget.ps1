@@ -25,7 +25,7 @@ winget install -e RandyRants.SharpKeys # Key Remap # https://github.com/randyran
 
 winget install NGWIN.PicPick  # PicPick은 버전이 좀 뒤쳐짐
 winget install Notion.Notion
-winget install Bandisoft.Bandizip
+winget install 9P2W3W81SPPB # Bandisoft.Bandizip
 winget install 9PH84MZPJ931 # Send Anywhere - Make file transfers faster
 winget install voidtools.Everything
 winget install Apple.iTunes
