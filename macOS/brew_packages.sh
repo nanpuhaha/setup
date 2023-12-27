@@ -30,6 +30,17 @@ brew install --cask postman-cli
 brew install --cask zoom
 
 
+# Rectangle - a window management app based on Spectacle, written in Swift.
+# https://github.com/rxhanson/Rectangle
+brew install --cask rectangle
+# Swish https://highlyopinionated.co/swish/
+# Moom https://manytricks.com/moom/
+
+# Amethyst
+# Tiling window manager for macOS along the lines of xmonad.
+brew install --cask amethyst
+
+
 # Warp - modern terminal with AI
 # https://www.warp.dev/
 brew install --cask warp
