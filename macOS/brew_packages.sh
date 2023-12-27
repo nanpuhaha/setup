@@ -35,6 +35,7 @@ brew install --cask zoom
 brew install --cask rectangle
 # Swish https://highlyopinionated.co/swish/
 # Moom https://manytricks.com/moom/
+# Divvy 
 
 # Amethyst
 # Tiling window manager for macOS along the lines of xmonad.
