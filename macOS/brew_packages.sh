@@ -37,6 +37,9 @@ brew install --cask rectangle
 # Moom https://manytricks.com/moom/
 # Divvy 
 
+# Veeer - A Lightweight Window Manager for your OSX.
+# https://veeer.io/
+
 # Amethyst
 # Tiling window manager for macOS along the lines of xmonad.
 brew install --cask amethyst
