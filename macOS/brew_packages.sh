@@ -116,7 +116,13 @@ brew install jq # JSON processor
 brew install rlwrap  # Readline wrapper
 
 
+# PlayCover - Run iOS apps and games on Apple Silicon Macs with mouse, keyboard and controller support.
+# https://github.com/PlayCover/PlayCover
+# https://www.applegamingwiki.com/wiki/PlayCover
+brew install --cask PlayCover/playcover/playcover-community
 
+# Sideloadly - The new & best way to sideload your favorite games and apps to your iOS device, Apple Silicon Mac or Apple TV!
+# https://sideloadly.io/
 
 
 brew install openjdk (Java)
