@@ -181,6 +181,7 @@ winget install Chocolatey.ChocolateyGUI
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 # 환경변수에 C:\ProgramData\chocolatey 추가하기
 
+# 관리자 권한 필요!
 choco install boxstarter
 # 위 명령어는 -y를 줘도 Y/N 물어봄...
 # -y, --yes, --confirm
