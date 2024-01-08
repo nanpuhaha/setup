@@ -6,6 +6,9 @@ Disable-UAC
 
 # winget install -e 의 -e는 --exact. 대/소문자 구분 검사를 포함하여 쿼리에서 정확한 문자열을 사용합니다. 하위 문자열의 기본 동작을 사용하지 않습니다.
 
+# --accept-package-agreements parameter for package level agreements.
+# --accept-source-agreements parameter for source level agreements.
+# winget install -e --silent --accept-source-agreements --accept-package-agreements --id 9PGZKJC81Q7J
 
 # https://winstall.app/
 # https://winget.run/
@@ -177,3 +180,9 @@ winget install Chocolatey.ChocolateyGUI
 # https://chocolatey.org/install#individual
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 # 환경변수에 C:\ProgramData\chocolatey 추가하기
+
+choco install boxstarter
+# 위 명령어는 -y를 줘도 Y/N 물어봄...
+# -y, --yes, --confirm
+#     Confirm all prompts - Chooses affirmative answer instead of prompting.
+#       Implies --accept-license
