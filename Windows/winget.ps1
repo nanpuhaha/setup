@@ -174,6 +174,8 @@ winget install -e --id=Python.Python.3.11
 winget install -e --id=Python.Python.3.12
 winget install -e --id=KiCad.KiCad
 
+winget install DevToys
+
 
 winget install Chocolatey.Chocolatey
 winget install Chocolatey.ChocolateyGUI
