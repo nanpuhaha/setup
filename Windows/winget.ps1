@@ -174,6 +174,9 @@ winget install -e --id=Python.Python.3.11
 winget install -e --id=Python.Python.3.12
 winget install -e --id=KiCad.KiCad
 
+# DevToys - Swiss Army knife for developers
+# https://devtoys.app
+# https://github.com/veler/DevToys
 winget install DevToys
 
 
