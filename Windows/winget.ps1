@@ -173,6 +173,7 @@ winget install -e --id=tailscale.tailscale
 winget install -e --id=Python.Python.3.11
 winget install -e --id=Python.Python.3.12
 winget install -e --id=KiCad.KiCad
+winget install -e --id agalwood.Motrix
 
 # DevToys - Swiss Army knife for developers
 # https://devtoys.app
