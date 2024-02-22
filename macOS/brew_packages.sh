@@ -174,6 +174,43 @@ brew install speedtest-cli
 brew install cask
 
 
+
+
+# qView - An image viewer for viewing
+# No toolbars or distractions—pure space efficiency
+# https://interversehq.com/qview/
+brew install qview
+
+# Picturama
+# Digital image organizer powered by the web
+# https://picturama.github.io/
+
+# Xee - Image viewer for macOS
+# https://theunarchiver.com/xee
+
+# Lyn for macOS
+# Organize, view, edit and share your photos.
+# https://www.lynapp.com/
+
+# Viso (Paid)
+# Beautiful minimal image viewer for macOS
+# https://getviso.app/
+
+# LilyView (Paid)
+# LilyView is an easy to use lightweight image viewer for Mac.
+# https://lilyviewapp.com/
+
+# Phiewer - macOS Image Viewer
+# https://phiewer.com/
+
+# XnView MP: Image management
+# The enhanced Image Viewer for (Windows/MacOS/Linux)
+# https://www.xnview.com/en/xnviewmp/#downloads
+
+# EdgeView
+# https://www.edgeview.co.kr/?lang=ko
+
+
 postgresql (Database)
 
 qemu (Emulator)
