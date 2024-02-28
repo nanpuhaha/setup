@@ -181,6 +181,12 @@ winget install -e --id agalwood.Motrix
 winget install DevToys
 
 
+winget install -e --id=QL-Win.QuickLook
+winget install -e --id=Bandisoft.Honeyview
+winget install -e --id=IrfanSkiljan.IrfanView
+winget install -e --id=XnSoft.XnView.Classic
+
+
 winget install Chocolatey.Chocolatey
 winget install Chocolatey.ChocolateyGUI
 # https://chocolatey.org/install#individual
