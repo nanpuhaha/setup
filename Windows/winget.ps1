@@ -185,6 +185,10 @@ winget install -e --id=QL-Win.QuickLook
 winget install -e --id=Bandisoft.Honeyview
 winget install -e --id=IrfanSkiljan.IrfanView
 winget install -e --id=XnSoft.XnView.Classic
+winget install -e --id=nomacs.nomacs
+winget install -e --id=DuongDieuPhap.ImageGlass
+winget install -e --id=GIMP.GIMP
+winget install -e --id=FastStone.Viewer
 
 
 winget install Chocolatey.Chocolatey
