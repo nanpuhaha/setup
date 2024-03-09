@@ -211,6 +211,14 @@ brew install qview
 # https://www.edgeview.co.kr/?lang=ko
 
 
+# Whisky
+# https://getwhisky.app
+# https://github.com/Whisky-App/Whisky
+# A modern Wine wrapper for macOS built with SwiftUI
+brew install --cask whisky
+
+
+
 postgresql (Database)
 
 qemu (Emulator)
