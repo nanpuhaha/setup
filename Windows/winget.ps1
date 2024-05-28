@@ -26,6 +26,8 @@ winget install SublimeHQ.SublimeText.4
 winget install -e RandyRants.SharpKeys # Key Remap # https://github.com/randyrants/sharpkeys
 
 
+winget install Rclone.Rclone
+
 winget install NGWIN.PicPick  # PicPick은 버전이 좀 뒤쳐짐
 winget install Notion.Notion
 winget install 9P2W3W81SPPB # Bandisoft.Bandizip
