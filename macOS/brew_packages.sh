@@ -13,6 +13,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 
 
+brew install --cask marta   # https://marta.sh  File Manager for macOS.
+
+
 brew install --cask simplenote
 brew install --cask notion
 brew install --cask capacities  # App to write and organize your ideas
