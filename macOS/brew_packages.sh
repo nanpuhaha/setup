@@ -13,8 +13,19 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 
 
-brew install --cask marta   # https://marta.sh  File Manager for macOS.
+# Open Source (start)
+brew install --cask marta   # File Manager  https://marta.sh
+brew install lihaoyun6/tap/quickrecorder  # A lightweight screen recorder  https://github.com/lihaoyun6/QuickRecorder
+brew install jordanbaird-ice  # Powerful menu bar manager  https://github.com/jordanbaird/Ice
+# Git interface   https://github.com/git-up/GitUp
+brew install --cask reminders-menubar  # Simple macOS menu bar app to view and interact with reminders.  https://github.com/DamascenoRafael/reminders-menubar
+# Open Source (end)
 
+
+# App Store (start)
+# LocalSend
+# Code Piper : Copy verification code now  https://apps.apple.com/us/app/code-piper/id1669959741?mt=12
+# App Store (end)
 
 brew install --cask simplenote
 brew install --cask notion
