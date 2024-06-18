@@ -43,6 +43,9 @@ brew install --cask postman-cli
 
 brew install --cask zoom
 
+# AltTab https://alt-tab-macos.netlify.app
+# brings the power of Windows’s “alt-tab” window switcher to macOS.
+brew install --cask alt-tab
 
 # Rectangle - a window management app based on Spectacle, written in Swift.
 # https://github.com/rxhanson/Rectangle
