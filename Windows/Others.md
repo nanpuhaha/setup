@@ -4,6 +4,9 @@ A Windows quick look tool.
 
 Acts just like the one in macOS, but Seer is more powerful, customizable and faster.
 
+### [Geek Uninstaller](https://geekuninstaller.com)
+Efficient and Fast, Small and Portable. 100% Free
+
 
 ### [Tacent View](https://bluescan.github.io/tacentview/gui.html)
 
