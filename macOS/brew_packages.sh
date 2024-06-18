@@ -47,19 +47,24 @@ brew install --cask zoom
 # brings the power of Windows’s “alt-tab” window switcher to macOS.
 brew install --cask alt-tab
 
+# Hammerspoon https://www.hammerspoon.org
+# https://www.hammerspoon.org
+# https://github.com/Hammerspoon/hammerspoon
+# Powerful Automation. Bridge between the OS and a Lua scripting engine.
+brew install --cask hammerspoon
+
+# ------ Window Manager ------
 # Rectangle - a window management app based on Spectacle, written in Swift.
 # https://github.com/rxhanson/Rectangle
 brew install --cask rectangle
 # Swish https://highlyopinionated.co/swish/
 # Moom https://manytricks.com/moom/
-# Divvy 
-
-# Veeer - A Lightweight Window Manager for your OSX.
-# https://veeer.io/
-
-# Amethyst
-# Tiling window manager for macOS along the lines of xmonad.
-brew install --cask amethyst
+# Divvy https://mizage.com/divvy/ $13.99
+# AeroSpace https://github.com/nikitabobko/AeroSpace
+# brew install --cask nikitabobko/tap/aerospace
+# Veeer https://veeer.io/
+# Amethyst Tiling window manager for macOS along the lines of xmonad.
+# brew install --cask amethyst
 
 
 # Warp - modern terminal with AI
