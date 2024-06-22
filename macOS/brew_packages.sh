@@ -67,6 +67,14 @@ brew install --cask rectangle
 # brew install --cask amethyst
 
 
+
+# skhd : Simple hotkey daemon for macOS
+# https://github.com/koekeishiya/skhd
+brew install koekeishiya/formulae/skhd
+# skhd --start-service
+
+
+
 # Warp - modern terminal with AI
 # https://www.warp.dev/
 brew install --cask warp
