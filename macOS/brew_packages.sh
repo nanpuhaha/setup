@@ -68,6 +68,31 @@ brew install --cask rectangle
 
 
 
+
+
+# ----- Shift alternatives -----
+# https://lonare.medium.com/9-top-tryshift-alternative-free-paid-f81e3c0f7a10
+# Rambox https://rambox.app
+# Freeter - The Organizer for  https://freeter.io
+# Biscuit https://eatbiscuit.com
+# Stack Browser https://stackbrowser.com
+# Komz https://komz.app
+# Wavebox
+# Front
+# Sidekick
+# Hamsket https://github.com/TheGoddessInari/hamsket
+
+# Ferdium : All your services in one place, built by the community
+# https://github.com/ferdium/ferdium-app
+
+# Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more.
+# https://github.com/meetfranz/franz
+brew cask install franz
+
+# Station : One app to rule them all!
+# https://github.com/getstation/desktop-app
+
+
 # skhd : Simple hotkey daemon for macOS
 # https://github.com/koekeishiya/skhd
 brew install koekeishiya/formulae/skhd
