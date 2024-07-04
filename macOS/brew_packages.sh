@@ -68,6 +68,12 @@ brew install --cask rectangle
 
 
 
+# TabExtend https://www.tabextend.com
+# Charmstone https://charmstone.app
+# TabMagic https://tabmagic.app
+# ClickUp https://clickup.com
+# eesel https://www.eesel.app
+
 
 
 # ----- Shift alternatives -----
@@ -79,7 +85,7 @@ brew install --cask rectangle
 # Komz https://komz.app
 # Wavebox
 # Front
-# Sidekick
+# Sidekick https://www.meetsidekick.com
 # Hamsket https://github.com/TheGoddessInari/hamsket
 
 # Ferdium : All your services in one place, built by the community
