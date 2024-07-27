@@ -236,6 +236,11 @@ brew install cask
 
 
 
+# Anki - Powerful, intelligent flash cards.
+# https://apps.ankiweb.net
+# https://docs.ankiweb.net/platform/mac/installing.html
+brew install --cask anki
+
 
 # qView - An image viewer for viewing
 # No toolbars or distractions—pure space efficiency
