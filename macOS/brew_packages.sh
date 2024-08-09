@@ -21,6 +21,8 @@ brew install jordanbaird-ice  # Powerful menu bar manager  https://github.com/jo
 brew install --cask reminders-menubar  # Simple macOS menu bar app to view and interact with reminders.  https://github.com/DamascenoRafael/reminders-menubar
 # Open Source (end)
 
+brew install stats # macOS system monitor in your menu bar  https://github.com/exelban/stats
+
 
 # App Store (start)
 # LocalSend
