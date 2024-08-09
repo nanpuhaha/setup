@@ -237,6 +237,8 @@ brew install speedtest-cli
 brew install cask
 
 
+brew install --cask android-commandlinetools
+# https://dev.to/mochafreddo/setting-up-and-managing-android-emulators-on-macos-with-homebrew-3fg0
 
 # Anki - Powerful, intelligent flash cards.
 # https://apps.ankiweb.net
