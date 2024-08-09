@@ -12,3 +12,5 @@ development environment setup for macOS
 
 
 - [Choosy](https://choosy.app) opens every link in the right browser
+
+- [Disk-O](https://www.widgetworx.com/apps/disko.html) menu bar disk free space <img width="80" alt="스크린샷 2024-08-09 오전 11 46 16" src="https://github.com/user-attachments/assets/2990896e-d25c-4eb0-a803-ea29939788e1">
