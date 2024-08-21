@@ -12,6 +12,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew update
 
+brew install nmap
+
+
+
 
 # Open Source (start)
 brew install --cask marta   # File Manager  https://marta.sh
