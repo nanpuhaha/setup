@@ -13,6 +13,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 
 brew install nmap
+brew install rsync
+brew install rclone
 
 
 
