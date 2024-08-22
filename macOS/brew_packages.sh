@@ -52,7 +52,7 @@ brew install --cask postman-cli
 brew install --cask zoom
 
 # AltTab https://alt-tab-macos.netlify.app
-# brings the power of Windows’s “alt-tab” window switcher to macOS.
+# Windows alt-tab on macOS
 brew install --cask alt-tab
 
 # Hammerspoon https://www.hammerspoon.org
