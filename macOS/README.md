@@ -8,6 +8,14 @@ development environment setup for macOS
 - [Ask GN: 매일 사용하는 추천 macOS앱을 알려주세요](https://news.hada.io/topic?id=15295)
 - [Ask HN: What macOS apps/programs do you use daily and recommend?](https://news.ycombinator.com/item?id=40627395)
 
+- https://sourabhbajaj.com/mac-setup/
+- https://github.com/nicolashery/mac-dev-setup
+- https://github.com/CodingGarden/mac-setup
+- https://github.com/bkuhlmann/mac_os-config
+- https://github.com/donnemartin/dev-setup
+- https://github.com/bkuhlmann/mac_os
+- https://github.com/wilsonmar/mac-setup
+
 ## Without brew
 
 
