@@ -1,8 +1,17 @@
 # winget
 # Boxstarter
 # Chocolatey
+# scoop
 
 Disable-UAC
+
+
+# Scoop
+# https://scoop.sh/
+# https://github.com/ScoopInstaller/Scoop
+# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+# Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
 
 # winget install -e 의 -e는 --exact. 대/소문자 구분 검사를 포함하여 쿼리에서 정확한 문자열을 사용합니다. 하위 문자열의 기본 동작을 사용하지 않습니다.
 
