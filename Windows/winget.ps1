@@ -202,6 +202,8 @@ winget install -e --id=GIMP.GIMP
 winget install -e --id=FastStone.Viewer
 
 
+# https://docs.chocolatey.org/en-us/choco/setup/#install-using-winget
+winget install --id chocolatey.chocolatey --source winget
 winget install Chocolatey.Chocolatey
 winget install Chocolatey.ChocolateyGUI
 # https://chocolatey.org/install#individual
