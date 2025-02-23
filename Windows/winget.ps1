@@ -5,6 +5,8 @@
 
 Disable-UAC
 
+# https://winstall.app/
+# https://winget.run/
 
 # Scoop
 # https://scoop.sh/
