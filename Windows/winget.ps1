@@ -26,6 +26,11 @@ winget install -e --silent --accept-source-agreements --accept-package-agreement
 
 # Microsoft Visual C++ Redistributable
 winget install -e --silent --accept-source-agreements --accept-package-agreements Microsoft.VCRedist.2005.x64 Microsoft.VCRedist.2005.x86 Microsoft.VCRedist.2008.x64 Microsoft.VCRedist.2008.x86 Microsoft.VCRedist.2010.x64 Microsoft.VCRedist.2010.x86 Microsoft.VCRedist.2012.x64 Microsoft.VCRedist.2012.x86 Microsoft.VCRedist.2013.x64 Microsoft.VCRedist.2013.x86 Microsoft.VCRedist.2015+.x64 Microsoft.VCRedist.2015+.x86
+# winget install -e --silent --accept-source-agreements --accept-package-agreements Microsoft.DotNet.Framework.DeveloperPack_4 Microsoft.DotNet.SDK.Preview Microsoft.DotNet.SDK.7 Microsoft.DotNet.SDK.6 Microsoft.DotNet.SDK.5 Microsoft.DotNet.SDK.3_1 
+# winget install -e --silent --accept-source-agreements --accept-package-agreements Microsoft.DotNet.Runtime.Preview Microsoft.DotNet.Runtime.7 Microsoft.DotNet.Runtime.6 Microsoft.DotNet.Runtime.5 Microsoft.DotNet.Runtime.3_1 
+# winget install -e --silent --accept-source-agreements --accept-package-agreements Microsoft.DotNet.DesktopRuntime.7 Microsoft.DotNet.DesktopRuntime.6 Microsoft.DotNet.DesktopRuntime.5 Microsoft.DotNet.DesktopRuntime.3_1 
+
+winget install -e --silent --accept-source-agreements --accept-package-agreements OBSProject.OBSStudio Dropbox.Dropbox Discord.Discord OpenJS.NodeJS Kakao.KakaoTalk Daum.PotPlayer voidtools.Everything Logitech.UnifyingSoftware Logitech.Options Nexon.NexonPlug Postman.Postman Postman.Postman.Canary Estmob.SendAnywhere SublimeHQ.SublimeText.4 Bandisoft.Bandizip ZhornSoftware.Stickies AdoptOpenJDK.OpenJDK.15 NGWIN.PicPick Apple.Bonjour Apple.BonjourPrintServices Apple.AppleApplicationSupport.x64 Apple.iTunes Chocolatey.ChocolateyGUI Chocolatey.Chocolatey MartiCliment.UniGetUI Anysphere.Cursor NAVER.Whale 
 
 # https://winstall.app/
 # https://winget.run/
