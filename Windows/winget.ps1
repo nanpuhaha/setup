@@ -215,6 +215,12 @@ winget install -e --id=GIMP.GIMP
 winget install -e --id=FastStone.Viewer
 
 
+# Windows Extension
+winget install "AV1 Video Extension" # 9MVZQVXJBQ9V
+winget install "WebP Image Extension" # 9PG2DK419DRG
+winget install "MPEG-2 Video Extension" # 9N95Q1ZZPMH4
+
+
 # https://docs.chocolatey.org/en-us/choco/setup/#install-using-winget
 winget install --id chocolatey.chocolatey --source winget
 winget install Chocolatey.Chocolatey
