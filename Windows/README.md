@@ -3,6 +3,11 @@ development environment setup for Windows
 
 
 
+### HEVC Extension
+https://store.rg-adguard.net/
+https://apps.microsoft.com/detail/9NMZLZ57R3T7
+Microsoft.HEVCVideoExtension_8wekyb3d8bbwe
+
 ## References
 - [winget](https://learn.microsoft.com/ko-kr/windows/package-manager/winget/)
 - [microsoft/windows-dev-box-setup-scripts](https://github.com/microsoft/windows-dev-box-setup-scripts)
