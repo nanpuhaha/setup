@@ -226,6 +226,11 @@ winget install Logitech.UnifyingSoftware
 # winget install Logitech.Options
 winget install Logitech.OptionsPlus
 
+# Disk Space 
+winget install AntibodySoftware.WizTree
+# winget install UderzoSoftware.SpaceSniffer
+# winget install WinDirStat.WinDirStat
+# winget install JAMSoftware.TreeSize
 
 # https://docs.chocolatey.org/en-us/choco/setup/#install-using-winget
 winget install --id chocolatey.chocolatey --source winget
