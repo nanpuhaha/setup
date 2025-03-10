@@ -220,6 +220,12 @@ winget install "AV1 Video Extension" # 9MVZQVXJBQ9V
 winget install "WebP Image Extension" # 9PG2DK419DRG
 winget install "MPEG-2 Video Extension" # 9N95Q1ZZPMH4
 
+# Logitech
+winget install Logitech.SetPoint   # Unifying 리시버 인식 못할 때, SetPoint 필요
+winget install Logitech.UnifyingSoftware
+# winget install Logitech.Options
+winget install Logitech.OptionsPlus
+
 
 # https://docs.chocolatey.org/en-us/choco/setup/#install-using-winget
 winget install --id chocolatey.chocolatey --source winget
