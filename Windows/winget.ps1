@@ -232,6 +232,14 @@ winget install AntibodySoftware.WizTree
 # winget install WinDirStat.WinDirStat
 # winget install JAMSoftware.TreeSize
 
+# Terminal
+winget install Warp.Warp
+# winget install "Fluent Terminal"  # 9P2KRLMFXF9Te
+# winget install WezTerm wez.wezterm
+# winget install Hyper.Hyper
+# winget install Eugeny.Tabby
+# winget install Alacritty.Alacritty
+
 # https://docs.chocolatey.org/en-us/choco/setup/#install-using-winget
 winget install --id chocolatey.chocolatey --source winget
 winget install Chocolatey.Chocolatey
