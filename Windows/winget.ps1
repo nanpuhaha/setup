@@ -64,6 +64,7 @@ winget install Git.Git
 winget install Python.Python.3.12
 winget install Anaconda.Anaconda3
 winget install 9nt1r1c2hh7j # OpenAI ChatGPT
+winget install Ollama.Ollama
 
 # winget install OpenJS.NodeJS
 winget install OpenJS.NodeJS.LTS
