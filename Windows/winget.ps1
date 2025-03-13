@@ -63,7 +63,20 @@ winget install Microsoft.VisualStudioCode.Insiders
 winget install Git.Git
 winget install Python.Python.3.12
 winget install Anaconda.Anaconda3
-winget install lencx.ChatGPT
+winget install 9nt1r1c2hh7j # OpenAI ChatGPT
+
+# winget install OpenJS.NodeJS
+winget install OpenJS.NodeJS.LTS
+winget install Yarn.Yarn
+
+# WSL
+winget install Canonical.Ubuntu
+
+# Claude Code
+# Error: Claude Code is not supported on Windows.
+# https://docs.anthropic.com/ko/docs/agents-and-tools/claude-code/overview
+# npm install -g @anthropic-ai/claude-code
+
 
 # 터미널 껐다 켜야 함
 # poetry
