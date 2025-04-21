@@ -256,8 +256,8 @@ winget install Warp.Warp
 
 # https://docs.chocolatey.org/en-us/choco/setup/#install-using-winget
 winget install --id chocolatey.chocolatey --source winget
-winget install Chocolatey.Chocolatey
-winget install Chocolatey.ChocolateyGUI
+winget install --accept-package-agreements --accept-source-agreements --silent --exact --id Chocolatey.Chocolatey 
+winget install --accept-package-agreements --accept-source-agreements --silent --exact --id Chocolatey.ChocolateyGUI
 # https://chocolatey.org/install#individual
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 # 환경변수에 C:\ProgramData\chocolatey 추가하기
