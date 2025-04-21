@@ -3,6 +3,10 @@
 # Chocolatey
 # scoop
 
+# Scoop : A command-line installer for Windows
+# https://scoop.sh
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
 # https://docs.chocolatey.org/en-us/choco/setup/#install-using-winget
 # winget install --id chocolatey.chocolatey --source winget
@@ -11,6 +15,10 @@ winget install --accept-package-agreements --accept-source-agreements --silent -
 # https://chocolatey.org/install#individual
 # Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 # 환경변수에 C:\ProgramData\chocolatey 추가하기
+
+# UniGetUI formerly WingetUI
+winget install --accept-package-agreements --accept-source-agreements --silent --exact --id MartiCliment.UniGetUI
+
 
 # 관리자 권한 필요!
 choco install boxstarter --yes
