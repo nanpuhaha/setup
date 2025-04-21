@@ -98,9 +98,12 @@ winget install Canonical.Ubuntu
 # npm install -g @anthropic-ai/claude-code
 
 
+# uv python 
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
 # 터미널 껐다 켜야 함
 # poetry
-(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+# (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
 
 # PATH에 추가 C:\Users\jwseo\AppData\Roaming\Python\Scripts
 
