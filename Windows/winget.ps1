@@ -120,7 +120,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 winget install ImageGlass
 winget install qView
 winget install qimgv
-winget install nomacs
+winget install nomacs # 이미지가 담긴 폴더를 열어서 한 눈에 보기에 좋음
 winget install PicView 
 winget install -e --id=IrfanSkiljan.IrfanView 
 winget install -e --id=IrfanSkiljan.IrfanView.PlugIns
