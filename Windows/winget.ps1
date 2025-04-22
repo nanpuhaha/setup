@@ -124,7 +124,7 @@ winget install nomacs
 winget install PicView 
 winget install -e --id=IrfanSkiljan.IrfanView 
 winget install -e --id=IrfanSkiljan.IrfanView.PlugIns
-winget install Visum Photo Viewer
+winget install 9N1X3Z50BLM8 # Visum Photo Viewer
 
 winget install -e --id=Microsoft.Edge
 winget install -e --id=Microsoft.Edge.Canary
