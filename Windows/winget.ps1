@@ -119,6 +119,17 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 winget install ImageGlass qView qimgv nomacs PicView IrfanSkiljan.IrfanView IrfanSkiljan.IrfanView.PlugIns XnSoft.XnView.Classic JPEGView
 winget install nomacs # nomacs : 이미지가 담긴 폴더를 열어서 한 눈에 보기에 좋음
 winget install 9N1X3Z50BLM8 # Visum Photo Viewer
+# A fast and simple image viewer / editor for many operating systems
+# https://github.com/woelper/oculante
+scoop install extras/oculante
+
+# A modern, electron and nodejs based image viewer for Mac, Windows and Linux.
+# https://github.com/sachinchoolur/lightgallery-desktop
+
+# Minimalist image viewer based on Leaflet.js and Electron.
+# https://github.com/sprout2000/leafview
+winget install sprout2000.LeafView
+
 
 winget install -e --id=Microsoft.Edge
 winget install -e --id=Microsoft.Edge.Canary
