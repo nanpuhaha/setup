@@ -116,14 +116,8 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 # PATH에 추가 C:\Users\jwseo\AppData\Roaming\Python\Scripts
 
 
-
-winget install ImageGlass
-winget install qView
-winget install qimgv
-winget install nomacs # 이미지가 담긴 폴더를 열어서 한 눈에 보기에 좋음
-winget install PicView 
-winget install -e --id=IrfanSkiljan.IrfanView 
-winget install -e --id=IrfanSkiljan.IrfanView.PlugIns
+winget install ImageGlass qView qimgv nomacs PicView IrfanSkiljan.IrfanView IrfanSkiljan.IrfanView.PlugIns
+winget install nomacs # nomacs : 이미지가 담긴 폴더를 열어서 한 눈에 보기에 좋음
 winget install 9N1X3Z50BLM8 # Visum Photo Viewer
 
 winget install -e --id=Microsoft.Edge
