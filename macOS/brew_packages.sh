@@ -295,6 +295,14 @@ brew install --cask whisky
 
 
 
+# Deskflow (Synergy alternative)
+# https://github.com/deskflow/deskflow
+# Share a single keyboard and mouse between multiple computers.
+brew tap deskflow/homebrew-tap
+brew install deskflow
+
+
+
 postgresql (Database)
 
 qemu (Emulator)
