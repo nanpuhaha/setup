@@ -1,7 +1,9 @@
 # Windows setup
 development environment setup for Windows
 
+## Setup Instructions
 
+To set up your development environment on Windows, you can use the `setup.ps1` script. This script installs necessary tools and packages using `winget`, `choco`, and `scoop`.
 
 ### HEVC Extension
 https://store.rg-adguard.net/
