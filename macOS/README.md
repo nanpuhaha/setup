@@ -22,3 +22,18 @@ development environment setup for macOS
 - [Choosy](https://choosy.app) opens every link in the right browser
 
 - [Disk-O](https://www.widgetworx.com/apps/disko.html) menu bar disk free space <img width="80" alt="스크린샷 2024-08-09 오전 11 46 16" src="https://github.com/user-attachments/assets/2990896e-d25c-4eb0-a803-ea29939788e1">
+
+- [Manila](https://github.com/neilsardesai/Manila) A Finder extension for changing folder colors
+
+https://github.com/user-attachments/assets/3ad0bf1b-3ce9-40c9-9c84-79ace50e4e26
+
+- [FancyFolders](https://github.com/kfreitag1/FancyFolders) Creating custom folder icons from SF symbols, text, or images.
+
+- [Icons](https://github.com/SAP/macOS-icon-generator) Easiest way to create customized app icons
+
+- https://github.com/othyn/github-folder-icon-macOS
+- https://github.com/mklement0/fileicon
+- https://github.com/christianvmm/folderart
+- https://github.com/rikumi/iconsur
+- https://github.com/berkaayildiz/chromafolder
+
