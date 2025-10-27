@@ -1,25 +1,18 @@
-# winget
-# Boxstarter
-# Chocolatey
-# scoop
+# winget Chocolatey Boxstarter scoop
 
-# Scoop : A command-line installer for Windows
-# https://scoop.sh
+Copy-Item ".\winget-settings.json" "$env:LOCALAPPDATA\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\settings.json" -Force
+winget upgrade --all
+
+# Scoop : A command-line installer for Windows https://scoop.sh
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
+# chocolatey : A package manager for Windows https://chocolatey.org/install
 # https://docs.chocolatey.org/en-us/choco/setup/#install-using-winget
-# winget install --id chocolatey.chocolatey --source winget
-winget install --accept-package-agreements --accept-source-agreements --silent --exact --id Chocolatey.Chocolatey 
-winget install --accept-package-agreements --accept-source-agreements --silent --exact --id Chocolatey.ChocolateyGUI
-# https://chocolatey.org/install#individual
-# Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-# 환경변수에 C:\ProgramData\chocolatey 추가하기
+winget install Chocolatey.Chocolatey 
+winget install MartiCliment.UniGetUI # formerly WingetUI
 
-# UniGetUI formerly WingetUI
-winget install --accept-package-agreements --accept-source-agreements --silent --exact --id MartiCliment.UniGetUI
-
-
+# Boxstarter : Windows 설치 자동화 도구 https://boxstarter.org
 # 관리자 권한 필요!
 choco install boxstarter --yes
  # --acceptlicense, --accept-license
@@ -27,7 +20,6 @@ choco install boxstarter --yes
  # -y, --yes, --confirm
  #     Confirm all prompts - Chooses affirmative answer instead of prompting.
  #       Implies --accept-license
-
 
 
 # Disable-UAC
@@ -43,21 +35,19 @@ choco install boxstarter --yes
 
 
 # winget install -e 의 -e는 --exact. 대/소문자 구분 검사를 포함하여 쿼리에서 정확한 문자열을 사용합니다. 하위 문자열의 기본 동작을 사용하지 않습니다.
+# --accept-package-agreements : parameter for package level agreements.
+# --accept-source-agreements  : parameter for source level agreements.
 
-# --accept-package-agreements parameter for package level agreements.
-# --accept-source-agreements parameter for source level agreements.
-# winget install -e --silent --accept-source-agreements --accept-package-agreements --id 9PGZKJC81Q7J
-
-winget install -e --silent --accept-source-agreements --accept-package-agreements Automattic.Simplenote Microsoft.VisualStudioCode Microsoft.VisualStudioCode.Insiders Git.Git Python.Python.3.13 Python.Python.3.12 Python.Python.3.11 Anaconda.Anaconda3 Microsoft.Edge.Canary Microsoft.Edge.Dev
-winget install -e --silent --accept-source-agreements --accept-package-agreements Postman.Postman Postman.Postman.Canary Telegram.TelegramDesktop Anki.Anki GitHub.cli Google.GoogleDrive CodecGuide.K-LiteCodecPack.Full cURL.cURL Opera.Opera Microsoft.PowerToys Dropbox.Dropbox OpenJS.NodeJS.LTS Yarn.Yarn Docker.DockerDesktop Microsoft.DevHome LocalSend.LocalSend SlackTechnologies.Slack Microsoft.EdgeDriver Microsoft.VisualStudioCode.CLI Oracle.JDK.21 Obsidian.Obsidian ImageMagick.ImageMagick tailscale.tailscale
+winget install Automattic.Simplenote Microsoft.VisualStudioCode Microsoft.VisualStudioCode.Insiders Git.Git Python.Python.3.13 Python.Python.3.12 Python.Python.3.11 Anaconda.Anaconda3 Microsoft.Edge.Canary Microsoft.Edge.Dev
+winget install Postman.Postman Postman.Postman.Canary Telegram.TelegramDesktop Anki.Anki GitHub.cli Google.GoogleDrive CodecGuide.K-LiteCodecPack.Full cURL.cURL Opera.Opera Microsoft.PowerToys Dropbox.Dropbox OpenJS.NodeJS.LTS Yarn.Yarn Docker.DockerDesktop Microsoft.DevHome LocalSend.LocalSend SlackTechnologies.Slack Microsoft.EdgeDriver Microsoft.VisualStudioCode.CLI Oracle.JDK.21 Obsidian.Obsidian ImageMagick.ImageMagick tailscale.tailscale
 
 # Microsoft Visual C++ Redistributable
-winget install -e --silent --accept-source-agreements --accept-package-agreements Microsoft.VCRedist.2005.x64 Microsoft.VCRedist.2005.x86 Microsoft.VCRedist.2008.x64 Microsoft.VCRedist.2008.x86 Microsoft.VCRedist.2010.x64 Microsoft.VCRedist.2010.x86 Microsoft.VCRedist.2012.x64 Microsoft.VCRedist.2012.x86 Microsoft.VCRedist.2013.x64 Microsoft.VCRedist.2013.x86 Microsoft.VCRedist.2015+.x64 Microsoft.VCRedist.2015+.x86
-# winget install -e --silent --accept-source-agreements --accept-package-agreements Microsoft.DotNet.Framework.DeveloperPack_4 Microsoft.DotNet.SDK.Preview Microsoft.DotNet.SDK.7 Microsoft.DotNet.SDK.6 Microsoft.DotNet.SDK.5 Microsoft.DotNet.SDK.3_1 
-# winget install -e --silent --accept-source-agreements --accept-package-agreements Microsoft.DotNet.Runtime.Preview Microsoft.DotNet.Runtime.7 Microsoft.DotNet.Runtime.6 Microsoft.DotNet.Runtime.5 Microsoft.DotNet.Runtime.3_1 
-# winget install -e --silent --accept-source-agreements --accept-package-agreements Microsoft.DotNet.DesktopRuntime.7 Microsoft.DotNet.DesktopRuntime.6 Microsoft.DotNet.DesktopRuntime.5 Microsoft.DotNet.DesktopRuntime.3_1 
+winget install Microsoft.VCRedist.2005.x64 Microsoft.VCRedist.2005.x86 Microsoft.VCRedist.2008.x64 Microsoft.VCRedist.2008.x86 Microsoft.VCRedist.2010.x64 Microsoft.VCRedist.2010.x86 Microsoft.VCRedist.2012.x64 Microsoft.VCRedist.2012.x86 Microsoft.VCRedist.2013.x64 Microsoft.VCRedist.2013.x86 Microsoft.VCRedist.2015+.x64 Microsoft.VCRedist.2015+.x86
+# winget install Microsoft.DotNet.Framework.DeveloperPack_4 Microsoft.DotNet.SDK.Preview Microsoft.DotNet.SDK.7 Microsoft.DotNet.SDK.6 Microsoft.DotNet.SDK.5 Microsoft.DotNet.SDK.3_1 
+# winget install Microsoft.DotNet.Runtime.Preview Microsoft.DotNet.Runtime.7 Microsoft.DotNet.Runtime.6 Microsoft.DotNet.Runtime.5 Microsoft.DotNet.Runtime.3_1 
+# winget install Microsoft.DotNet.DesktopRuntime.7 Microsoft.DotNet.DesktopRuntime.6 Microsoft.DotNet.DesktopRuntime.5 Microsoft.DotNet.DesktopRuntime.3_1 
 
-winget install -e --silent --accept-source-agreements --accept-package-agreements OBSProject.OBSStudio Dropbox.Dropbox Discord.Discord OpenJS.NodeJS Kakao.KakaoTalk Daum.PotPlayer voidtools.Everything Logitech.UnifyingSoftware Logitech.Options Nexon.NexonPlug Postman.Postman Postman.Postman.Canary Estmob.SendAnywhere SublimeHQ.SublimeText.4 Bandisoft.Bandizip ZhornSoftware.Stickies AdoptOpenJDK.OpenJDK.15 NGWIN.PicPick Apple.Bonjour Apple.BonjourPrintServices Apple.AppleApplicationSupport.x64 Apple.iTunes Chocolatey.ChocolateyGUI Chocolatey.Chocolatey MartiCliment.UniGetUI Anysphere.Cursor NAVER.Whale 
+winget install OBSProject.OBSStudio Dropbox.Dropbox Discord.Discord OpenJS.NodeJS Kakao.KakaoTalk Daum.PotPlayer voidtools.Everything Nexon.NexonPlug Postman.Postman Postman.Postman.Canary Estmob.SendAnywhere SublimeHQ.SublimeText.4 Bandisoft.Bandizip ZhornSoftware.Stickies AdoptOpenJDK.OpenJDK.15 NGWIN.PicPick Apple.Bonjour Apple.BonjourPrintServices Apple.AppleApplicationSupport.x64 Apple.iTunes Chocolatey.ChocolateyGUI Chocolatey.Chocolatey MartiCliment.UniGetUI Anysphere.Cursor NAVER.Whale 
 
 # https://winstall.app/
 # https://winget.run/
@@ -65,17 +55,27 @@ winget install -e --silent --accept-source-agreements --accept-package-agreement
 # 패키지 검색하기
 # winget search
 
+# 터미널 도구
+winget install cURL.cURL JernejSimoncic.Wget StefansTools.grepWin Git.Git jqlang.jq OpenJS.NodeJS.LTS OpenJS.NodeJS Yarn.Yarn pnpm.pnpm
+winget install Rclone.Rclone yt-dlp.yt-dlp Streamlink.Streamlink ImageMagick.ImageMagick Gyan.FFmpeg
+winget install Python.Python.3.14 Python.Python.3.13 Python.Python.3.12 astral-sh.uv Anaconda.Anaconda3 Anaconda.Miniconda3
+winget install Oracle.JDK.21
+
+# 텍스트 에디터
+winget install SublimeHQ.SublimeText.4 SublimeHQ.SublimeText.3 Microsoft.VisualStudioCode Microsoft.VisualStudioCode.Insiders Microsoft.VisualStudioCode.CLI Microsoft.VisualStudioCode.Insiders.CLI
+
+# 브라우저
+winget install Microsoft.Edge Microsoft.Edge.Beta Microsoft.Edge.Dev Microsoft.Edge.Canary 
+winget install Google.Chrome Google.Chrome.Beta Google.Chrome.Dev Google.Chrome.Canary
 
 # 설치된 패키지 목록 보기
 # winget list 
-winget install GitHub.GitHubDesktop
-winget install SublimeHQ.SublimeText.4
+winget install GitHub.GitHubDesktop GitHub.cli
 
 
-winget install -e RandyRants.SharpKeys # Key Remap # https://github.com/randyrants/sharpkeys
+winget install RandyRants.SharpKeys # Key Remap # https://github.com/randyrants/sharpkeys
 
 
-winget install Rclone.Rclone
 
 winget install NGWIN.PicPick  # PicPick은 버전이 좀 뒤쳐짐
 winget install Notion.Notion
@@ -85,17 +85,8 @@ winget install voidtools.Everything
 winget install Apple.iTunes
 winget install Automattic.Simplenote
 winget install WinMerge.WinMerge
-winget install Microsoft.VisualStudioCode
-winget install Microsoft.VisualStudioCode.Insiders
-winget install Git.Git
-winget install Python.Python.3.12
-winget install Anaconda.Anaconda3
 winget install 9nt1r1c2hh7j # OpenAI ChatGPT
 winget install Ollama.Ollama
-
-# winget install OpenJS.NodeJS
-winget install OpenJS.NodeJS.LTS
-winget install Yarn.Yarn
 
 # WSL
 winget install Canonical.Ubuntu
@@ -104,10 +95,6 @@ winget install Canonical.Ubuntu
 # Error: Claude Code is not supported on Windows.
 # https://docs.anthropic.com/ko/docs/agents-and-tools/claude-code/overview
 # npm install -g @anthropic-ai/claude-code
-
-
-# uv python 
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 
 # 터미널 껐다 켜야 함
 # poetry
@@ -131,122 +118,88 @@ scoop install extras/oculante
 winget install sprout2000.LeafView
 
 
-winget install -e --id=Microsoft.Edge
-winget install -e --id=Microsoft.Edge.Canary
-winget install -e --id=Microsoft.Edge.Dev
 
-winget install -e --id Google.Chrome
-winget install -e --id Google.Chrome.Beta
-winget install -e --id Google.Chrome.Dev
-winget install -e --id Google.Chrome.Canary
+winget install Google.ChromeRemoteDesktop
 
-winget install -e --id Google.ChromeRemoteDesktop
+winget install Google.GoogleDrive
+# winget install Mozilla.Firefox
+# winget install Mozilla.Firefox.Beta
+# winget install Mozilla.Firefox.DeveloperEdition
+# winget install Mozilla.Firefox.ESR
+# winget install Mozilla.Firefox.Nightly
 
-# winget install -e --id Mozilla.Firefox
-# winget install -e --id Mozilla.Firefox.Beta
-# winget install -e --id Mozilla.Firefox.DeveloperEdition
-# winget install -e --id Mozilla.Firefox.ESR
-# winget install -e --id Mozilla.Firefox.Nightly
+winget install Zoom.Zoom
+winget install zhaopengme.gitnote
+# winget install zokugun.MrCode
 
-winget install -e --id Zoom.Zoom
-winget install -e --id zhaopengme.gitnote
-# winget install -e --id zokugun.MrCode
+winget install zyedidia.micro
+winget install yetone.OpenAITranslator
+winget install YmSoft.Nalgaeset
+winget install XnSoft.XnView.Classic
+winget install XnSoft.XnConvert
+winget install XnSoft.XnViewMP
+winget install Front.scrcpy+
+winget install blacktop.ipsw
+winget install Postman.Postman
+winget install Postman.Postman.DesktopAgent
+winget install SmartSoft.SmartFTP
+winget install StartIsBack.StartAllBack
+winget install Telegram.TelegramDesktop
+winget install Iterate.Cyberduck
+winget install Iterate.MountainDuck
+winget install AnyDeskSoftwareGmbH.AnyDesk
+winget install Microsoft.PowerBI
+winget install Anki.Anki
+winget install Olivia.VIA
+winget install calibre.calibre
+winget install ShiningLight.OpenSSL
+winget install Frontesque.scrcpy+
+winget install ScooterSoftware.BeyondCompare4
+winget install PhraseExpress.PhraseExpress
+winget install DigiDNA.iMazing
+winget install eTeks.SweetHome3D
+winget install CodecGuide.K-LiteCodecPack.Full
+winget install Opera.Opera
+winget install Microsoft.PowerToys
+winget install Dropbox.Dropbox
+winget install JLC.EasyEDA
+winget install JLC.EasyEDA.Pro
+winget install CrystalDewWorld.CrystalDiskInfo
+winget install CrystalDewWorld.CrystalDiskMark
+winget install WinMerge.WinMerge
+winget install TeamViewer.TeamViewer.Host
+winget install Docker.DockerDesktop
 
 
-winget install -e --id zyedidia.micro
-winget install -e --id yt-dlp.yt-dlp
-winget install -e --id yt-dlg.yt-dlg
-winget install -e --id youtube-dl.youtube-dl
-winget install -e --id yetone.OpenAITranslator
-winget install -e --id YmSoft.Nalgaeset
-winget install -e --id Yarn.Yarn
-winget install -e --id XnSoft.XnView.Classic
-winget install -e --id XnSoft.XnConvert
-winget install -e --id XnSoft.XnViewMP
-winget install -e --id=Google.Chrome
-winget install -e --id=Google.Chrome.Dev
-winget install -e --id=Front.scrcpy+
-winget install -e --id=blacktop.ipsw
-winget install -e --id=Postman.Postman.Canary
-winget install -e --id=Postman.Postman.DesktopAgent
-winget install -e --id=SmartSoft.SmartFTP
-winget install -e --id=StartIsBack.StartAllBack
-winget install -e --id=Postman.Postman
-winget install -e --id=Telegram.TelegramDesktop
-winget install -e --id=Iterate.Cyberduck
-winget install -e --id=Iterate.MountainDuck
-winget install -e --id=AnyDeskSoftwareGmbH.AnyDesk
-winget install -e --id=Microsoft.PowerBI
-winget install -e --id=Anki.Anki
-winget install -e --id=Olivia.VIA
-winget install -e --id=calibre.calibre
-winget install -e --id=ShiningLight.OpenSSL
-winget install -e --id=GitHub.cli
-winget install -e --id=Google.GoogleDrive
-winget install -e --id=GitHub.GitHubDesktop
-winget install -e --id=GitHub.GitHubDesktop.Beta
-winget install -e --id=Frontesque.scrcpy+
-winget install -e --id=ScooterSoftware.BeyondCompare4
-winget install -e --id=PhraseExpress.PhraseExpress
-winget install -e --id=DigiDNA.iMazing
-winget install -e --id=eTeks.SweetHome3D
-winget install -e --id=CodecGuide.K-LiteCodecPack.Full
-winget install -e --id=Streamlink.Streamlink.TwitchGui
-winget install -e --id=Streamlink.Streamlink
-winget install -e --id=Opera.Opera
-winget install -e --id=cURL.cURL
-winget install -e --id=StefansTools.grepWin
-winget install -e --id=Anaconda.Miniconda3
-winget install -e --id=Microsoft.PowerToys
-winget install -e --id=Dropbox.Dropbox
-winget install -e --id=JLC.EasyEDA
-winget install -e --id=JLC.EasyEDA.Pro
-winget install -e --id=CrystalDewWorld.CrystalDiskInfo
-winget install -e --id=CrystalDewWorld.CrystalDiskMark
-winget install -e --id=OpenJS.NodeJS
-winget install -e --id=OpenJS.NodeJS.LTS
-winget install -e --id=WinMerge.WinMerge
-winget install -e --id=TeamViewer.TeamViewer.Host
-winget install -e --id=Docker.DockerDesktop
-winget install -e --id=Logitech.OptionsPlus
-winget install -e --id=Logitech.Options
-winget install -e --id=Logitech.UnifyingSoftware
-winget install -e --id=Sigil-Ebook.Sigil
-winget install -e --id=Microsoft.DevHome
-winget install -e --id=LocalSend.LocalSend
-winget install -e --id=Figma.Figma
-winget install -e --id=Notion.Notion
-winget install -e --id=SlackTechnologies.Slack
-winget install -e --id=Microsoft.EdgeDriver
-winget install -e --id=Apple.iTunes
-winget install -e --id=Microsoft.VisualStudioCode.CLI
-winget install -e --id=UB-Mannheim.TesseractOCR
-winget install -e --id=Oracle.JDK.21
-winget install -e --id=Chocolatey.Chocolatey
-winget install -e --id=Notepad++.Notepad++
-winget install -e --id=Tonec.InternetDownloadManager
-winget install -e --id=Rufus.Rufus
-winget install -e --id=BlenderFoundation.Blender
-winget install -e --id=Rclone.Rclone
-winget install -e --id=MongoDB.Compass.Full
-winget install -e --id=JGraph.Draw
-winget install -e --id=GoLang.Go
-winget install -e --id=Logitech.SetPoint
-winget install -e --id=MediaArea.MediaInfo.GUI
-winget install -e --id=junegunn.fzf
-winget install -e --id=1MHz.Knotes
-winget install -e --id=Obsidian.Obsidian
-winget install -e --id=BinanceTech.Binance
-winget install -e --id=ImageMagick.ImageMagick
-winget install -e --id=HandBrake.HandBrake
-winget install -e --id=HandBrake.HandBrake.CLI
-winget install -e --id=Syncthing.Syncthing
-winget install -e --id=Anaconda.Anaconda3
-winget install -e --id=tailscale.tailscale
-winget install -e --id=Python.Python.3.11
-winget install -e --id=Python.Python.3.12
-winget install -e --id=KiCad.KiCad
-winget install -e --id agalwood.Motrix
+winget install Sigil-Ebook.Sigil
+winget install LocalSend.LocalSend
+winget install Figma.Figma
+winget install Notion.Notion
+winget install SlackTechnologies.Slack
+winget install Microsoft.EdgeDriver
+winget install Apple.iTunes
+winget install Microsoft.VisualStudioCode.CLI
+winget install UB-Mannheim.TesseractOCR
+winget install Chocolatey.Chocolatey
+winget install Notepad++.Notepad++
+winget install Tonec.InternetDownloadManager
+winget install Rufus.Rufus
+winget install BlenderFoundation.Blender
+winget install MongoDB.Compass.Full
+winget install JGraph.Draw
+winget install GoLang.Go
+winget install MediaArea.MediaInfo.GUI
+winget install junegunn.fzf
+winget install 1MHz.Knotes
+winget install Obsidian.Obsidian
+winget install BinanceTech.Binance
+winget install HandBrake.HandBrake
+winget install HandBrake.HandBrake.CLI
+winget install Syncthing.Syncthing
+winget install Anaconda.Anaconda3
+winget install tailscale.tailscale
+winget install KiCad.KiCad
+winget install agalwood.Motrix
 
 # DevToys - Swiss Army knife for developers
 # https://devtoys.app
@@ -254,37 +207,18 @@ winget install -e --id agalwood.Motrix
 winget install DevToys
 
 
-winget install -e --id=QL-Win.QuickLook
-winget install -e --id=Bandisoft.Honeyview
-winget install -e --id=IrfanSkiljan.IrfanView
-winget install -e --id=XnSoft.XnView.Classic
-winget install -e --id=nomacs.nomacs
-winget install -e --id=DuongDieuPhap.ImageGlass
-winget install -e --id=GIMP.GIMP
-winget install -e --id=FastStone.Viewer
+winget install QL-Win.QuickLook Bandisoft.Honeyview IrfanSkiljan.IrfanView XnSoft.XnView.Classic nomacs.nomacs DuongDieuPhap.ImageGlass FastStone.Viewer
 
 
 # Windows Extension
-winget install "AV1 Video Extension" # 9MVZQVXJBQ9V
-winget install "WebP Image Extension" # 9PG2DK419DRG
-winget install "MPEG-2 Video Extension" # 9N95Q1ZZPMH4
+winget install "AV1 Video Extension" "WebP Image Extension" "MPEG-2 Video Extension"
 
 # Logitech
-winget install Logitech.SetPoint   # Unifying 리시버 인식 못할 때, SetPoint 필요
-winget install Logitech.UnifyingSoftware
-# winget install Logitech.Options
-winget install Logitech.OptionsPlus
+# Unifying 리시버 인식 못할 때, SetPoint 필요
+winget install Logitech.UnifyingSoftware Logitech.SetPoint Logitech.OptionsPlus  # Logitech.Options
 
 # Disk Space 
-winget install AntibodySoftware.WizTree
-# winget install UderzoSoftware.SpaceSniffer
-# winget install WinDirStat.WinDirStat
-# winget install JAMSoftware.TreeSize
+winget install AntibodySoftware.WizTree # UderzoSoftware.SpaceSniffer WinDirStat.WinDirStat JAMSoftware.TreeSize
 
 # Terminal
 winget install Warp.Warp
-# winget install "Fluent Terminal"  # 9P2KRLMFXF9Te
-# winget install WezTerm wez.wezterm
-# winget install Hyper.Hyper
-# winget install Eugeny.Tabby
-# winget install Alacritty.Alacritty
