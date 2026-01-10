@@ -1,2 +1,5 @@
-# Ubuntu setup
-development environment setup for Ubuntu
+# Ubuntu Setup
+
+Development environment setup for Ubuntu.
+
+*(Scripts to be added)*

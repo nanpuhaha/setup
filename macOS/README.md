@@ -1,5 +1,18 @@
-# macOS setup
-development environment setup for macOS
+# macOS Setup
+
+Development environment setup for macOS.
+
+## Setup Instructions
+
+Run the following scripts to set up your environment:
+
+- **`brew_packages.sh`**: Installs applications and tools using Homebrew.
+  ```bash
+  ./brew_packages.sh
+  ```
+- **`zsh.sh`**: Configures Zsh shell environment.
+
+---
 
 
 ### References

@@ -1,14 +1,35 @@
-# Windows setup
-development environment setup for Windows
+# Windows Setup
+
+Development environment setup for Windows.
 
 ## Setup Instructions
 
-To set up your development environment on Windows, you can use the `setup.ps1` script. This script installs necessary tools and packages using `winget`, `choco`, and `scoop`.
+### Winget Setup (`winget.ps1`)
+
+The `winget.ps1` script installs a comprehensive list of development tools, browsers, and utilities using `winget`.
+
+**Run as Administrator:**
+```powershell
+.\winget.ps1
+```
+
+**Key Packages Included:**
+- **Editors**: VS Code, IntelliJ IDEA, **Google Antigravity**, **Zed**, **Windsurf**, **Cursor**, Sublime Text
+- **Languages**: Node.js, Python, Java (JDK 21), Go
+- **Utilities**: PowerToys, Bandizip, Everything, Docker Desktop
+- **Browsers**: Chrome, Edge, Whale, Opera
+
+---
+
+### Other Tools
+
+- `cmd_aliases.bat`: Command line aliases.
+- `profile.ps1`: PowerShell profile configuration.
+- `winget-settings.json`: Configuration for Winget.
 
 ### HEVC Extension
-https://store.rg-adguard.net/
-https://apps.microsoft.com/detail/9NMZLZ57R3T7
-Microsoft.HEVCVideoExtension_8wekyb3d8bbwe
+- [Microsoft.HEVCVideoExtension](https://apps.microsoft.com/detail/9NMZLZ57R3T7)
+- [Hevc Video Extensions from Device Manufacturer](https://store.rg-adguard.net/)
 
 ## References
 - [winget](https://learn.microsoft.com/ko-kr/windows/package-manager/winget/)
