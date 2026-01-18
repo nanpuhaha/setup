@@ -23,6 +23,7 @@ brew install rclone
 brew install --cask marta   # File Manager  https://marta.sh
 brew install lihaoyun6/tap/quickrecorder  # A lightweight screen recorder  https://github.com/lihaoyun6/QuickRecorder
 brew install jordanbaird-ice  # Powerful menu bar manager  https://github.com/jordanbaird/Ice
+brew install --cask hiddenbar  # An ultra-light MacOS utility that helps hide menu bar icons.  https://github.com/dwarvesf/hidden
 # Git interface   https://github.com/git-up/GitUp
 brew install --cask reminders-menubar  # Simple macOS menu bar app to view and interact with reminders.  https://github.com/DamascenoRafael/reminders-menubar
 # Open Source (end)
@@ -55,6 +56,10 @@ brew install --cask zoom
 # Windows alt-tab on macOS
 brew install --cask alt-tab
 
+# DockDoor https://dockdoor.net/
+# Window peeking and alt-tab functionality for macOS.
+brew install --cask dockdoor
+
 # Hammerspoon https://www.hammerspoon.org
 # https://www.hammerspoon.org
 # https://github.com/Hammerspoon/hammerspoon
@@ -81,6 +86,13 @@ brew install --cask rectangle
 # TabMagic https://tabmagic.app
 # ClickUp https://clickup.com
 # eesel https://www.eesel.app
+
+# LaunchOS
+# https://launchosapp.com/
+# Requires macOS 26 (Tahoe) or higher
+if [[ $(sw_vers -productVersion | cut -d. -f1) -ge 26 ]]; then
+  brew install --cask launchos
+fi
 
 
 
