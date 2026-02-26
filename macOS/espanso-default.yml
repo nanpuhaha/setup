@@ -25,6 +25,34 @@ matches:
         params:
           format: "%Y-%m-%d %H:%M:%S"
 
+  # 수학 및 단위
+  - trigger: ";*"
+    replace: "×"
+  - trigger: ";/"
+    replace: "÷"
+  - trigger: ";+-"
+    replace: "±"
+
+  # 기호 및 강조
+  - trigger: ";v"
+    replace: "✔"
+  - trigger: ";star"
+    replace: "★"
+  - trigger: ";box"
+    replace: "■"
+  - trigger: ";tri"
+    replace: "▲"
+  - trigger: ";cir"
+    replace: "●"
+
+  # 화살표
+  - trigger: ";->"
+    replace: "→"
+  - trigger: ";<-"
+    replace: "←"
+  - trigger: ";=>"
+    replace: "⇒"
+
 # yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/config.schema.json
 
 # For a complete introduction, visit the official docs at: https://espanso.org/docs/
