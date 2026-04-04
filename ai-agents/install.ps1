@@ -1,0 +1,225 @@
+# AI Agent Setup Script for Windows (PowerShell)
+# Installs: Claude Code, Gemini CLI, GitHub Copilot CLI, Codex CLI
+# Extensions: superpowers, bmad, bkit, oh-my-claudecode, oh-my-codex, claude-hud, GSD (v1 & v2)
+
+#Requires -Version 5.1
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Continue"   # Don't abort on non-fatal errors
+
+function Write-Step   { Write-Host "`n━━━ $args ━━━" -ForegroundColor Cyan }
+function Write-Info   { Write-Host "[INFO] $args" -ForegroundColor White }
+function Write-Ok     { Write-Host "[OK]   $args" -ForegroundColor Green }
+function Write-Warn   { Write-Host "[WARN] $args" -ForegroundColor Yellow }
+function Write-Err    { Write-Host "[ERR]  $args" -ForegroundColor Red }
+
+# ─────────────────────────────────────────────
+# 0. Prerequisites
+# ─────────────────────────────────────────────
+Write-Step "Checking prerequisites"
+
+if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
+    Write-Err "Node.js not found. Please install Node.js 20+ first."
+    Write-Host "  winget install OpenJS.NodeJS.LTS"
+    exit 1
+}
+
+if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
+    Write-Err "npm not found. Please install npm first."
+    exit 1
+}
+
+$nodeVersion = (node --version) -replace 'v', ''
+$nodeMajor = [int]($nodeVersion.Split('.')[0])
+if ($nodeMajor -lt 20) {
+    Write-Warn "Node.js v$nodeVersion found. Version 20+ is recommended."
+}
+
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+    Write-Err "Git not found. Please install Git first."
+    Write-Host "  winget install Git.Git"
+    exit 1
+}
+
+Write-Ok "Node.js $(node --version) and Git found"
+
+# ─────────────────────────────────────────────
+# 1. AI CLI Tools
+# ─────────────────────────────────────────────
+Write-Step "Installing AI Agent CLI Tools"
+
+Write-Info "Installing Claude Code..."
+npm install -g @anthropic-ai/claude-code
+Write-Ok "Claude Code installed"
+
+Write-Info "Installing Gemini CLI..."
+npm install -g @google/gemini-cli
+Write-Ok "Gemini CLI installed"
+
+Write-Info "Installing OpenAI Codex CLI..."
+npm install -g @openai/codex
+Write-Ok "OpenAI Codex CLI installed"
+
+if (Get-Command gh -ErrorAction SilentlyContinue) {
+    Write-Info "Installing GitHub Copilot CLI extension..."
+    try {
+        gh extension install github/gh-copilot 2>$null
+        Write-Ok "GitHub Copilot CLI installed"
+    } catch {
+        try {
+            gh extension upgrade gh-copilot 2>$null
+            Write-Ok "GitHub Copilot CLI upgraded"
+        } catch {
+            Write-Warn "Copilot CLI install skipped (may already be installed)"
+        }
+    }
+} else {
+    Write-Warn "GitHub CLI (gh) not found — skipping Copilot CLI"
+    Write-Warn "Install gh: winget install GitHub.cli"
+}
+
+# ─────────────────────────────────────────────
+# 2. oh-my-claudecode & oh-my-codex (npm)
+# ─────────────────────────────────────────────
+Write-Step "Installing oh-my-claudecode and oh-my-codex"
+
+Write-Info "Installing oh-my-claudecode (npm)..."
+npm install -g oh-my-claude-sisyphus@latest
+Write-Ok "oh-my-claudecode installed"
+
+Write-Info "Installing oh-my-codex (npm)..."
+npm install -g oh-my-codex@latest
+Write-Ok "oh-my-codex installed"
+
+# ─────────────────────────────────────────────
+# 3. GSD — Get Shit Done (v1 original + v2 Pro)
+#    Both share the same npm package: get-shit-done-cc
+#    --all installs for Claude Code, Gemini, Codex, Copilot, and more
+# ─────────────────────────────────────────────
+Write-Step "Installing GSD (Get Shit Done) for all runtimes"
+
+Write-Info "Running GSD installer for all runtimes..."
+npx get-shit-done-cc@latest --all --global
+Write-Ok "GSD installed for all runtimes"
+
+# ─────────────────────────────────────────────
+# 4. Superpowers — Codex (git clone + junction)
+#    Claude Code & Gemini require in-session commands (see below)
+# ─────────────────────────────────────────────
+Write-Step "Installing Superpowers for Codex"
+
+$SuperpowersDir = "$env:USERPROFILE\.codex\superpowers"
+$SkillsDir      = "$env:USERPROFILE\.agents\skills"
+
+if (Test-Path $SuperpowersDir) {
+    Write-Info "Updating existing Superpowers installation..."
+    git -C $SuperpowersDir pull --rebase --quiet
+    Write-Ok "Superpowers updated ($SuperpowersDir)"
+} else {
+    Write-Info "Cloning Superpowers into $SuperpowersDir..."
+    git clone --quiet https://github.com/obra/superpowers.git $SuperpowersDir
+    Write-Ok "Superpowers cloned"
+}
+
+if (-not (Test-Path $SkillsDir)) {
+    New-Item -ItemType Directory -Force -Path $SkillsDir | Out-Null
+}
+
+$SkillsLink = "$SkillsDir\superpowers"
+if (-not (Test-Path $SkillsLink)) {
+    # Use junction (works without Developer Mode on Windows)
+    cmd /c mklink /J "$SkillsLink" "$SuperpowersDir\skills" | Out-Null
+    Write-Ok "Junction created: $SkillsLink -> $SuperpowersDir\skills"
+} else {
+    Write-Ok "Superpowers junction already exists"
+}
+
+# ─────────────────────────────────────────────
+# 5. Superpowers — Gemini extension
+# ─────────────────────────────────────────────
+Write-Step "Installing Superpowers for Gemini CLI"
+
+if (Get-Command gemini -ErrorAction SilentlyContinue) {
+    Write-Info "Installing Superpowers Gemini extension..."
+    try {
+        gemini extensions install https://github.com/obra/superpowers
+        Write-Ok "Superpowers Gemini extension installed"
+    } catch {
+        Write-Warn "Could not install Superpowers for Gemini (authenticate first with 'gemini')"
+    }
+} else {
+    Write-Warn "gemini command not found — skipping Gemini Superpowers extension"
+    Write-Warn "(The Gemini CLI may need to be authenticated first: run 'gemini' once)"
+}
+
+# ─────────────────────────────────────────────
+# 6. bkit — Gemini extension
+#    Claude Code requires in-session commands (see below)
+# ─────────────────────────────────────────────
+Write-Step "Installing bkit for Gemini CLI"
+
+if (Get-Command gemini -ErrorAction SilentlyContinue) {
+    Write-Info "Installing bkit Gemini extension..."
+    try {
+        gemini extensions install https://github.com/popup-studio-ai/bkit-gemini.git
+        Write-Ok "bkit Gemini extension installed"
+    } catch {
+        Write-Warn "Could not install bkit for Gemini"
+    }
+} else {
+    Write-Warn "gemini command not found — skipping bkit Gemini extension"
+}
+
+# ─────────────────────────────────────────────
+# 7. Print manual steps (Claude Code plugins)
+# ─────────────────────────────────────────────
+$border = "=" * 70
+Write-Host ""
+Write-Host $border -ForegroundColor Cyan
+Write-Host "  Claude Code Plugin Setup  (run inside Claude Code)" -ForegroundColor Cyan
+Write-Host $border -ForegroundColor Cyan
+Write-Host ""
+Write-Host "  # Superpowers" -ForegroundColor White
+Write-Host "  /plugin marketplace add obra/superpowers-marketplace" -ForegroundColor Yellow
+Write-Host "  /plugin install superpowers@superpowers-marketplace" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "  # bkit" -ForegroundColor White
+Write-Host "  /plugin marketplace add popup-studio-ai/bkit-claude-code" -ForegroundColor Yellow
+Write-Host "  /plugin install bkit" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "  # Claude HUD" -ForegroundColor White
+Write-Host "  winget install OpenJS.NodeJS.LTS  # if Node not found during setup" -ForegroundColor DarkGray
+Write-Host "  /plugin marketplace add jarrodwatts/claude-hud" -ForegroundColor Yellow
+Write-Host "  /plugin install claude-hud" -ForegroundColor Yellow
+Write-Host "  /claude-hud:setup" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "  # oh-my-claudecode (plugin mode)" -ForegroundColor White
+Write-Host "  /plugin marketplace add https://github.com/Yeachan-Heo/oh-my-claudecode" -ForegroundColor Yellow
+Write-Host "  /plugin install oh-my-claudecode" -ForegroundColor Yellow
+Write-Host "  /omc-setup" -ForegroundColor Yellow
+Write-Host ""
+Write-Host $border -ForegroundColor Cyan
+
+Write-Host ""
+Write-Host $border -ForegroundColor Magenta
+Write-Host "  BMAD Method  (per project)" -ForegroundColor Magenta
+Write-Host $border -ForegroundColor Magenta
+Write-Host ""
+Write-Host "  cd C:\path\to\your\project" -ForegroundColor Yellow
+Write-Host "  npx bmad-method install --tools claude-code --yes" -ForegroundColor Yellow
+Write-Host ""
+Write-Host $border -ForegroundColor Magenta
+
+Write-Host ""
+Write-Host $border -ForegroundColor Green
+Write-Host "  Authentication (first-time setup)" -ForegroundColor Green
+Write-Host $border -ForegroundColor Green
+Write-Host ""
+Write-Host "  claude          -> Anthropic API key or OAuth" -ForegroundColor White
+Write-Host "  gemini          -> Google account / Gemini API key" -ForegroundColor White
+Write-Host "  codex           -> OpenAI API key (OPENAI_API_KEY env var)" -ForegroundColor White
+Write-Host "  gh auth login   -> GitHub account (for Copilot CLI)" -ForegroundColor White
+Write-Host ""
+Write-Host $border -ForegroundColor Green
+
+Write-Host ""
+Write-Ok "AI Agent setup complete!"
