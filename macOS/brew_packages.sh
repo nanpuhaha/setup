@@ -12,9 +12,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew update
 
-brew install nmap
-brew install rsync
-brew install rclone
+brew install nmap rsync rclone
 
 
 
@@ -46,9 +44,7 @@ brew install --cask visual-studio-code-insiders  # Not checked
 
 brew install --cask microsoft-edge
 
-brew install --cask postman
-brew install --cask postman-agent
-brew install --cask postman-cli
+brew install --cask postman postman-agent postman-cli
 
 brew install --cask zoom
 
@@ -113,7 +109,7 @@ fi
 
 # Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more.
 # https://github.com/meetfranz/franz
-brew cask install franz
+brew install --cask franz
 
 # Station : One app to rule them all!
 # https://github.com/getstation/desktop-app
@@ -206,53 +202,48 @@ brew install --cask PlayCover/playcover/playcover-community
 # https://sideloadly.io/
 
 
-brew install openjdk (Java)
+brew install openjdk # (Java)
 
-brew install node (Node.js)
+brew install node # (Node.js)
 brew install yarn
 brew install coreutils # GNU File, Shell, and Text utilities
 brew install pkg-config # Manage compile and link flags for libraries
 brew install automake #  Tool for generating GNU Standards-compliant Makefiles
 
 
-libtool: Generic library support script
-cmake: Cross-platform make
-readline: Library for command-line editing
-libyaml: YAML Parser
-autoconf: Automatic configure script builder
-redis: Persistent key-value database, with built-in net interface
-nmap: Port scanning utility for large networks
-pyenv: Python version management
-ansible: Automate deployment, configuration, and upgrading
-sqlite: Command-line interface for SQLite
-watch: Executes a program periodically, showing output fullscreen
+# libtool: Generic library support script
+# cmake: Cross-platform make
+# readline: Library for command-line editing
+# libyaml: YAML Parser
+# autoconf: Automatic configure script builder
+# redis: Persistent key-value database, with built-in net interface
+# nmap: Port scanning utility for large networks
+# pyenv: Python version management
+# ansible: Automate deployment, configuration, and upgrading
+# sqlite: Command-line interface for SQLite
+# watch: Executes a program periodically, showing output fullscreen
 
-httpie: User-friendly cURL replacement (command-line HTTP client)
-docker-compose: Isolated development environments using Docker
-rust: Safe, concurrent, practical language
-exiftool: Perl lib for reading and writing EXIF metadata
-aria2: Download with resuming and segmented downloading
-
-
-brew install ghidra (Reverse engineering tools)
-brew install gh (GitHub CLI)
-brew install copilot-cli # GitHub Copilot CLI
-brew install blackhole-2ch (Cask) (Virtual Audio Driver, useful for routing desktop audio)
-brew install ffmpeg (Audio/video converter)
-brew install blender (Cask) (3D modeling)
-brew install obs (Cask) (Broadcasting and screencasting)
+# httpie: User-friendly cURL replacement (command-line HTTP client)
+# docker-compose: Isolated development environments using Docker
+# rust: Safe, concurrent, practical language
+# exiftool: Perl lib for reading and writing EXIF metadata
+# aria2: Download with resuming and segmented downloading
 
 
-brew install prusaslicer (Cask) (3D slicer)
-brew install openscad (Cask) (Programmable CAD modeler)
+brew install ghidra # (Reverse engineering tools)
+brew install gh # (GitHub CLI)
+brew install --cask blackhole-2ch # Virtual Audio Driver, useful for routing desktop audio
+brew install ffmpeg # (Audio/video converter)
+brew install --cask blender # (3D modeling)
+brew install --cask obs # (Broadcasting and screencasting)
+
+
+brew install --cask prusaslicer # (3D slicer)
+brew install --cask openscad # (Programmable CAD modeler)
 
 brew install wget
 
-brew install mas
-brew install imagemagick
-brew install zsh
-brew install speedtest-cli
-brew install cask
+brew install mas imagemagick zsh speedtest-cli cask
 
 
 brew install --cask android-commandlinetools
@@ -315,23 +306,23 @@ brew install deskflow
 
 
 
-postgresql (Database)
+# postgresql (Database)
 
-qemu (Emulator)
-utm (Cask) (Virtual machines UI on top of QEMU)
-
-
-
-docker (Cask) (Docker Desktop, container builder and runner)
-kubernetes-cli (Kubernetes API client)
-k9s (Kubernetes TUI)
-helm (Kubernetes package manager)
-
-barrier (Cask) (KVM)
-discord (Cask) (Voice and Text Chat)
-slack (Cask) (Text Chat)
-zoom (Cask) (Video Conferencing)
+# qemu (Emulator)
+# utm (Cask) (Virtual machines UI on top of QEMU)
 
 
-https://github.com/fwcd/brew-pkgs
-https://gist.github.com/pmkay/e09034971b6f23214fd9f95a3e6d1c44
+
+# docker (Cask) (Docker Desktop, container builder and runner)
+# kubernetes-cli (Kubernetes API client)
+# k9s (Kubernetes TUI)
+# helm (Kubernetes package manager)
+
+# barrier (Cask) (KVM)
+# discord (Cask) (Voice and Text Chat)
+# slack (Cask) (Text Chat)
+# zoom (Cask) (Video Conferencing)
+
+
+# https://github.com/fwcd/brew-pkgs
+# https://gist.github.com/pmkay/e09034971b6f23214fd9f95a3e6d1c44
