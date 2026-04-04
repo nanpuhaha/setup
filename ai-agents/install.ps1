@@ -1,6 +1,7 @@
 # AI Agent Setup Script for Windows (PowerShell)
 # Installs: Claude Code, Gemini CLI, GitHub Copilot CLI, Codex CLI
-# Extensions: superpowers, bmad, bkit, oh-my-claudecode, oh-my-codex, claude-hud, GSD (v1 & v2)
+# Extensions: superpowers, bmad, bkit (claude-code/gemini/codex),
+#             oh-my-claudecode, oh-my-codex, claude-hud, GSD v1 & v2
 
 #Requires -Version 5.1
 Set-StrictMode -Version Latest
@@ -91,15 +92,23 @@ npm install -g oh-my-codex@latest
 Write-Ok "oh-my-codex installed"
 
 # ─────────────────────────────────────────────
-# 3. GSD — Get Shit Done (v1 original + v2 Pro)
-#    Both share the same npm package: get-shit-done-cc
-#    --all installs for Claude Code, Gemini, Codex, Copilot, and more
+# 3. GSD — Get Shit Done
+#    v1 (get-shit-done): prompt framework for Claude Code, Gemini, Codex, etc.
+#      --all --global  installs for all runtimes non-interactively
+#    v2 (gsd-2): standalone TypeScript CLI agent built on Pi SDK
+#      npm install -g gsd-pi@latest  (no interactive prompts)
 # ─────────────────────────────────────────────
-Write-Step "Installing GSD (Get Shit Done) for all runtimes"
+Write-Step "Installing GSD v1 (get-shit-done) for all runtimes"
 
-Write-Info "Running GSD installer for all runtimes..."
+Write-Info "Running GSD v1 installer for all runtimes..."
 npx get-shit-done-cc@latest --all --global
-Write-Ok "GSD installed for all runtimes"
+Write-Ok "GSD v1 installed for all runtimes"
+
+Write-Step "Installing GSD v2 (gsd-pi) globally"
+
+Write-Info "Installing GSD v2 CLI..."
+npm install -g gsd-pi@latest
+Write-Ok "GSD v2 installed"
 
 # ─────────────────────────────────────────────
 # 4. Superpowers — Codex (git clone + junction)
@@ -152,8 +161,10 @@ if (Get-Command gemini -ErrorAction SilentlyContinue) {
 }
 
 # ─────────────────────────────────────────────
-# 6. bkit — Gemini extension
-#    Claude Code requires in-session commands (see below)
+# 6. bkit — platform-specific extensions
+#    bkit-gemini  : gemini extensions install
+#    bkit-codex   : download install.ps1 and run with --global
+#    bkit-claude-code: requires in-session commands (see below)
 # ─────────────────────────────────────────────
 Write-Step "Installing bkit for Gemini CLI"
 
@@ -167,6 +178,20 @@ if (Get-Command gemini -ErrorAction SilentlyContinue) {
     }
 } else {
     Write-Warn "gemini command not found — skipping bkit Gemini extension"
+}
+
+Write-Step "Installing bkit for Codex (global)"
+
+Write-Info "Installing bkit-codex globally..."
+$bkitCodexScript = "$env:TEMP\bkit-codex-install.ps1"
+try {
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/popup-studio-ai/bkit-codex/main/install.ps1" `
+        -OutFile $bkitCodexScript -UseBasicParsing
+    & $bkitCodexScript --global
+    Remove-Item $bkitCodexScript -ErrorAction SilentlyContinue
+    Write-Ok "bkit-codex installed globally"
+} catch {
+    Write-Warn "Could not install bkit-codex: $_"
 }
 
 # ─────────────────────────────────────────────

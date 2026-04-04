@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # AI Agent Setup Script for macOS and Ubuntu
 # Installs: Claude Code, Gemini CLI, GitHub Copilot CLI, Codex CLI
-# Extensions: superpowers, bmad, bkit, oh-my-claudecode, oh-my-codex, claude-hud, GSD (v1 & v2)
+# Extensions: superpowers, bmad, bkit (claude-code/gemini/codex),
+#             oh-my-claudecode, oh-my-codex, claude-hud, GSD v1 & v2
 
 set -euo pipefail
 
@@ -89,15 +90,23 @@ npm install -g oh-my-codex@latest
 success "oh-my-codex installed"
 
 # ─────────────────────────────────────────────
-# 3. GSD — Get Shit Done (v1 original + v2 Pro)
-#    Both share the same npm package: get-shit-done-cc
-#    --all installs for Claude Code, Gemini, Codex, Copilot, and more
+# 3. GSD — Get Shit Done
+#    v1 (get-shit-done): prompt framework for Claude Code, Gemini, Codex, etc.
+#      --all --global  installs for all runtimes non-interactively
+#    v2 (gsd-2): standalone TypeScript CLI agent built on Pi SDK
+#      npm install -g gsd-pi@latest  (no interactive prompts)
 # ─────────────────────────────────────────────
-step "Installing GSD (Get Shit Done) for all runtimes"
+step "Installing GSD v1 (get-shit-done) for all runtimes"
 
-info "Running GSD installer for all runtimes..."
+info "Running GSD v1 installer for all runtimes..."
 npx get-shit-done-cc@latest --all --global
-success "GSD installed for all runtimes"
+success "GSD v1 installed for all runtimes"
+
+step "Installing GSD v2 (gsd-pi) globally"
+
+info "Installing GSD v2 CLI..."
+npm install -g gsd-pi@latest
+success "GSD v2 installed"
 
 # ─────────────────────────────────────────────
 # 4. Superpowers — Codex (git clone + symlink)
@@ -141,8 +150,10 @@ else
 fi
 
 # ─────────────────────────────────────────────
-# 6. bkit — Gemini extension
-#    Claude Code requires in-session commands (see below)
+# 6. bkit — platform-specific extensions
+#    bkit-gemini  : gemini extensions install
+#    bkit-codex   : curl | bash --global (installs to ~/.bkit-codex + ~/.agents/skills/)
+#    bkit-claude-code: requires in-session commands (see below)
 # ─────────────────────────────────────────────
 step "Installing bkit for Gemini CLI"
 
@@ -153,6 +164,13 @@ if command -v gemini &>/dev/null; then
 else
     warn "gemini command not found — skipping bkit Gemini extension"
 fi
+
+step "Installing bkit for Codex (global)"
+
+info "Installing bkit-codex globally..."
+curl -fsSL https://raw.githubusercontent.com/popup-studio-ai/bkit-codex/main/install.sh \
+    | bash -s -- --global
+success "bkit-codex installed globally"
 
 # ─────────────────────────────────────────────
 # 7. Print manual steps (Claude Code plugins)

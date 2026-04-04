@@ -19,14 +19,18 @@
 |------|------|------|
 | [Superpowers](https://github.com/obra/superpowers) | TDD·계획·리뷰·디버깅 등 핵심 개발 워크플로우 스킬 모음 | Claude Code, Gemini, Codex |
 | [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD) | AI 기반 애자일 개발 프레임워크 (12+ 전문 에이전트) | Claude Code (프로젝트별) |
-| [bkit](https://github.com/popup-studio-ai/bkit-claude-code) | PDCA 방법론 기반 Context Engineering 프레임워크 | Claude Code, Gemini |
+| [bkit (Claude Code)](https://github.com/popup-studio-ai/bkit-claude-code) | PDCA 방법론 기반 Context Engineering 프레임워크 (Claude Code용) | Claude Code |
+| [bkit (Gemini)](https://github.com/popup-studio-ai/bkit-gemini) | PDCA 방법론 기반 Context Engineering 프레임워크 (Gemini용) | Gemini |
+| [bkit (Codex)](https://github.com/popup-studio-ai/bkit-codex) | PDCA 방법론 기반 Context Engineering 프레임워크 (Codex용) | Codex |
 | [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | Claude Code용 멀티 에이전트 오케스트레이션 | Claude Code |
 | [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | Codex용 워크플로우 레이어 | Codex |
 | [claude-hud](https://github.com/jarrodwatts/claude-hud) | Claude Code 세션 상태 표시 HUD | Claude Code |
-| [GSD v1](https://github.com/gsd-build/get-shit-done) | 경량 컨텍스트 엔지니어링 + 스펙 기반 개발 시스템 (원본) | Claude Code, Gemini, Codex, Copilot 등 |
-| [GSD v2 (Pro)](https://github.com/itsjwill/gsd-pro) | GSD 원본 포크 — 롤백·복구·멀티모델 라우팅 추가 | Claude Code, Gemini, Codex, Copilot 등 |
+| [GSD v1 (get-shit-done)](https://github.com/gsd-build/get-shit-done) | 경량 컨텍스트 엔지니어링 + 스펙 기반 개발 시스템 — 프롬프트 프레임워크 | Claude Code, Gemini, Codex, Copilot 등 |
+| [GSD v2 (gsd-2)](https://github.com/gsd-build/gsd-2) | 독립형 TypeScript CLI 에이전트 (Pi SDK 기반) — 컨텍스트 제어·자동 복구·비용 추적 | 독립 실행 (`gsd` 명령어) |
 
-> **GSD v1과 v2 모두** 동일한 npm 패키지(`get-shit-done-cc`)를 사용하는 인스톨러로 설치됩니다.
+> **GSD v1과 v2는 완전히 다른 도구입니다.**
+> - **v1** (`get-shit-done-cc`): Claude Code, Gemini, Codex 등 각 AI 도구에 설치되는 프롬프트/슬래시커맨드 프레임워크
+> - **v2** (`gsd-pi`): Pi SDK 기반의 독립형 TypeScript CLI — 직접 에이전트 세션을 제어하는 별도의 프로그램
 
 ---
 
@@ -72,10 +76,12 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 1. **CLI 도구** — npm 글로벌 패키지로 설치
 2. **oh-my-claudecode / oh-my-codex** — npm 글로벌 패키지로 설치
-3. **GSD** — `npx get-shit-done-cc@latest --all --global` 실행 (모든 런타임에 설치)
-4. **Superpowers (Codex용)** — `~/.codex/superpowers`에 클론 후 `~/.agents/skills/` 심볼릭 링크를 생성
-5. **Superpowers (Gemini용)** — `gemini extensions install` 실행
-6. **bkit (Gemini용)** — `gemini extensions install` 실행
+3. **GSD v1** — `npx get-shit-done-cc@latest --all --global` 실행 (모든 런타임에 설치, 비인터랙티브)
+4. **GSD v2** — `npm install -g gsd-pi@latest` 실행 (독립형 CLI 에이전트)
+5. **Superpowers (Codex용)** — `~/.codex/superpowers`에 클론 후 `~/.agents/skills/` 심볼릭 링크를 생성
+6. **Superpowers (Gemini용)** — `gemini extensions install` 실행
+7. **bkit-gemini** — `gemini extensions install` 실행
+8. **bkit-codex** — `install.sh --global` 실행 (`~/.bkit-codex` + `~/.agents/skills/` 에 설치)
 
 ### 수동 설치 항목 (Claude Code 내에서 실행)
 
@@ -149,11 +155,18 @@ npx bmad-method install --tools claude-code --yes
 # CLI 도구 업데이트
 npm update -g @anthropic-ai/claude-code @google/gemini-cli @openai/codex oh-my-claude-sisyphus oh-my-codex
 
-# GSD 업데이트
+# GSD v1 업데이트
 npx get-shit-done-cc@latest --all --global
+
+# GSD v2 업데이트
+npm install -g gsd-pi@latest
+# 또는 세션 내에서: /gsd update
 
 # Superpowers 업데이트 (Codex용)
 git -C ~/.codex/superpowers pull
+
+# bkit-codex 업데이트
+curl -fsSL https://raw.githubusercontent.com/popup-studio-ai/bkit-codex/main/install.sh | bash -s -- --global
 
 # Claude Code 플러그인 업데이트 (Claude Code 내에서)
 # /plugin update superpowers
