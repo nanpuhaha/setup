@@ -12,17 +12,13 @@ winget upgrade --all
 
 # 2. Package Managers
 # ---------------------------------------------------
-# Chocolatey
-winget install Chocolatey.Chocolatey Chocolatey.ChocolateyGUI
-
 # Scoop
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
-# 3. Development Tools
-# ---------------------------------------------------
-# IDEs & Editors & Runtimes & Terminal
 winget install `
+    Chocolatey.Chocolatey `
+    Chocolatey.ChocolateyGUI `
     Microsoft.VisualStudioCode `
     Microsoft.VisualStudioCode.Insiders `
     Microsoft.VisualStudioCode.CLI `
@@ -49,6 +45,7 @@ winget install `
     Git.Git `
     GitHub.GitHubDesktop `
     GitHub.cli `
+    GitHub.Copilot `
     Warp.Warp `
     junegunn.fzf `
     jqlang.jq `
@@ -68,11 +65,7 @@ winget install `
     Front.scrcpy+ `
     JLC.EasyEDA.Pro `
     KiCad.KiCad `
-    BinanceTech.Binance
-
-# 4. Web Browsers
-# ---------------------------------------------------
-winget install `
+    BinanceTech.Binance `
     Google.Chrome `
     Google.Chrome.Beta `
     Google.Chrome.Dev `
@@ -82,12 +75,7 @@ winget install `
     Microsoft.Edge.Dev `
     Microsoft.Edge.Canary `
     NAVER.Whale `
-    Opera.Opera
-    # Mozilla.Firefox
-
-# 5. Communication & Collaboration
-# ---------------------------------------------------
-winget install `
+    Opera.Opera `
     SlackTechnologies.Slack `
     Telegram.TelegramDesktop `
     Kakao.KakaoTalk `
@@ -95,11 +83,7 @@ winget install `
     Zoom.Zoom `
     Notion.Notion `
     Obsidian.Obsidian `
-    Figma.Figma
-
-# 6. Utilities & Productivity
-# ---------------------------------------------------
-winget install `
+    Figma.Figma `
     Microsoft.PowerToys `
     Bandisoft.Bandizip `
     voidtools.Everything `
@@ -122,11 +106,7 @@ winget install `
     PhraseExpress.PhraseExpress `
     Anki.Anki `
     calibre.calibre `
-    Sigil-Ebook.Sigil
-
-# 7. Media (Video, Audio, Images)
-# ---------------------------------------------------
-winget install `
+    Sigil-Ebook.Sigil `
     Daum.PotPlayer `
     CodecGuide.K-LiteCodecPack.Full `
     OBSProject.OBSStudio `
@@ -147,11 +127,7 @@ winget install `
     nomacs.nomacs `
     FastStone.Viewer `
     QL-Win.QuickLook `
-    NGWIN.PicPick
-
-# 8. System & Drivers
-# ---------------------------------------------------
-winget install `
+    NGWIN.PicPick `
     Microsoft.VCRedist.2015+.x64 `
     Microsoft.VCRedist.2015+.x86 `
     Logitech.OptionsPlus `
