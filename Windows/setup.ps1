@@ -7,8 +7,7 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
 # Install Chocolatey
 # Chocolatey: A package manager for Windows
-winget install --accept-package-agreements --accept-source-agreements --silent --exact --id Chocolatey.Chocolatey 
-winget install --accept-package-agreements --accept-source-agreements --silent --exact --id Chocolatey.ChocolateyGUI
+winget install --accept-package-agreements --accept-source-agreements --silent --exact Chocolatey.Chocolatey Chocolatey.ChocolateyGUI
 
 # Install UniGetUI
 # UniGetUI: A GUI for managing packages installed via winget, scoop, and chocolatey
@@ -26,4 +25,4 @@ winget install -e --silent --accept-source-agreements --accept-package-agreement
 winget install -e --silent --accept-source-agreements --accept-package-agreements Microsoft.VCRedist.2005.x64 Microsoft.VCRedist.2005.x86 Microsoft.VCRedist.2008.x64 Microsoft.VCRedist.2008.x86 Microsoft.VCRedist.2010.x64 Microsoft.VCRedist.2010.x86 Microsoft.VCRedist.2012.x64 Microsoft.VCRedist.2012.x86 Microsoft.VCRedist.2013.x64 Microsoft.VCRedist.2013.x86 Microsoft.VCRedist.2015+.x64 Microsoft.VCRedist.2015+.x86
 
 # Install additional tools and utilities
-winget install -e --silent --accept-source-agreements --accept-package-agreements OBSProject.OBSStudio Dropbox.Dropbox Discord.Discord OpenJS.NodeJS Kakao.KakaoTalk Daum.PotPlayer voidtools.Everything Logitech.UnifyingSoftware Logitech.Options Nexon.NexonPlug Postman.Postman Postman.Postman.Canary Estmob.SendAnywhere SublimeHQ.SublimeText.4 Bandisoft.Bandizip ZhornSoftware.Stickies AdoptOpenJDK.OpenJDK.15 NGWIN.PicPick Apple.Bonjour Apple.BonjourPrintServices Apple.AppleApplicationSupport.x64 Apple.iTunes Chocolatey.ChocolateyGUI Chocolatey.Chocolatey MartiCliment.UniGetUI Anysphere.Cursor NAVER.Whale 
+winget install -e --silent --accept-source-agreements --accept-package-agreements OBSProject.OBSStudio Dropbox.Dropbox Discord.Discord OpenJS.NodeJS Kakao.KakaoTalk Daum.PotPlayer voidtools.Everything Logitech.UnifyingSoftware Logitech.Options Nexon.NexonPlug Postman.Postman Postman.Postman.Canary Estmob.SendAnywhere SublimeHQ.SublimeText.4 Bandisoft.Bandizip ZhornSoftware.Stickies AdoptOpenJDK.OpenJDK.15 NGWIN.PicPick Apple.Bonjour Apple.BonjourPrintServices Apple.AppleApplicationSupport.x64 Apple.iTunes Anysphere.Cursor NAVER.Whale
