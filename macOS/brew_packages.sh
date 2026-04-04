@@ -236,7 +236,7 @@ aria2: Download with resuming and segmented downloading
 
 brew install ghidra (Reverse engineering tools)
 brew install gh (GitHub CLI)
-brew install 
+brew install copilot-cli # GitHub Copilot CLI
 brew install blackhole-2ch (Cask) (Virtual Audio Driver, useful for routing desktop audio)
 brew install ffmpeg (Audio/video converter)
 brew install blender (Cask) (3D modeling)
