@@ -49,6 +49,7 @@ winget install `
     Git.Git `
     GitHub.GitHubDesktop `
     GitHub.cli `
+    GitHub.Copilot `
     Warp.Warp `
     junegunn.fzf `
     jqlang.jq `
