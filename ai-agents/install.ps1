@@ -44,7 +44,86 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
 Write-Ok "Node.js $(node --version) and Git found"
 
 # ─────────────────────────────────────────────
-# 1. AI CLI Tools
+# 1. Centralized .agents home and tool links
+# ─────────────────────────────────────────────
+Write-Step "Preparing centralized .agents home"
+
+$AgentsHome      = "$env:USERPROFILE\.agents"
+$AgentsSkillsDir = "$AgentsHome\skills"
+$AgentsMd        = "$AgentsHome\AGENTS.md"
+
+if (-not (Test-Path $AgentsSkillsDir)) {
+    New-Item -ItemType Directory -Force -Path $AgentsSkillsDir | Out-Null
+}
+
+if (-not (Test-Path $AgentsMd)) {
+    @"
+# AGENTS
+
+이 파일과 `skills/` 폴더를 기준으로 AI 에이전트 설정을 중앙 관리합니다.
+
+- 공용 스킬: `~/.agents/skills`
+- 도구별 홈: `~/.agents/{codex,gemini,claude,copilot,antigravity}`
+"@ | Set-Content -Path $AgentsMd -Encoding UTF8
+    Write-Ok "Created $AgentsMd"
+} else {
+    Write-Ok "AGENTS.md already exists ($AgentsMd)"
+}
+
+function Ensure-ToolLink {
+    param(
+        [Parameter(Mandatory=$true)][string]$Tool
+    )
+
+    $linkPath = Join-Path $env:USERPROFILE ".$Tool"
+    $targetPath = Join-Path $AgentsHome $Tool
+
+    if (Test-Path $linkPath) {
+        $item = Get-Item -LiteralPath $linkPath -Force
+        if ($item.Attributes -band [IO.FileAttributes]::ReparsePoint) {
+            try {
+                if ($item.Target -eq $targetPath) {
+                    if (-not (Test-Path $targetPath)) {
+                        New-Item -ItemType Directory -Force -Path $targetPath | Out-Null
+                    }
+                    Write-Ok "$linkPath already links to $targetPath"
+                    return
+                }
+            } catch {}
+            Remove-Item -LiteralPath $linkPath -Force
+        } else {
+            if (-not (Test-Path $targetPath)) {
+                Move-Item -LiteralPath $linkPath -Destination $targetPath -Force
+                Write-Ok "Migrated $linkPath to $targetPath"
+            } else {
+                $backupPath = "$linkPath.backup-$(Get-Date -Format 'yyyyMMddHHmmss')"
+                Move-Item -LiteralPath $linkPath -Destination $backupPath -Force
+                Write-Warn "Moved existing $linkPath to $backupPath (target already exists)"
+            }
+        }
+    }
+
+    if (-not (Test-Path $targetPath)) {
+        New-Item -ItemType Directory -Force -Path $targetPath | Out-Null
+    }
+
+    try {
+        New-Item -ItemType SymbolicLink -Path $linkPath -Target $targetPath -Force | Out-Null
+        Write-Ok "Linked $linkPath -> $targetPath (symbolic link)"
+    } catch {
+        cmd /c mklink /J "$linkPath" "$targetPath" | Out-Null
+        Write-Ok "Linked $linkPath -> $targetPath (junction)"
+    }
+}
+
+Ensure-ToolLink -Tool "codex"
+Ensure-ToolLink -Tool "gemini"
+Ensure-ToolLink -Tool "claude"
+Ensure-ToolLink -Tool "copilot"
+Ensure-ToolLink -Tool "antigravity"
+
+# ─────────────────────────────────────────────
+# 2. AI CLI Tools
 # ─────────────────────────────────────────────
 Write-Step "Installing AI Agent CLI Tools"
 
@@ -79,7 +158,7 @@ if (Get-Command gh -ErrorAction SilentlyContinue) {
 }
 
 # ─────────────────────────────────────────────
-# 2. oh-my-claudecode & oh-my-codex (npm)
+# 3. oh-my-claudecode & oh-my-codex (npm)
 # ─────────────────────────────────────────────
 Write-Step "Installing oh-my-claudecode and oh-my-codex"
 
@@ -92,7 +171,7 @@ npm install -g oh-my-codex@latest
 Write-Ok "oh-my-codex installed"
 
 # ─────────────────────────────────────────────
-# 3. GSD — Get Shit Done
+# 4. GSD — Get Shit Done
 #    v1 (get-shit-done): prompt framework for Claude Code, Gemini, Codex, etc.
 #      --all --global  installs for all runtimes non-interactively
 #    v2 (gsd-2): standalone TypeScript CLI agent built on Pi SDK
@@ -111,13 +190,13 @@ npm install -g gsd-pi@latest
 Write-Ok "GSD v2 installed"
 
 # ─────────────────────────────────────────────
-# 4. Superpowers — Codex (git clone + junction)
+# 5. Superpowers — Codex (git clone + junction)
 #    Claude Code & Gemini require in-session commands (see below)
 # ─────────────────────────────────────────────
 Write-Step "Installing Superpowers for Codex"
 
-$SuperpowersDir = "$env:USERPROFILE\.codex\superpowers"
-$SkillsDir      = "$env:USERPROFILE\.agents\skills"
+$SuperpowersDir = "$AgentsHome\codex\superpowers"
+$SkillsDir      = $AgentsSkillsDir
 
 if (Test-Path $SuperpowersDir) {
     Write-Info "Updating existing Superpowers installation..."
@@ -143,7 +222,7 @@ if (-not (Test-Path $SkillsLink)) {
 }
 
 # ─────────────────────────────────────────────
-# 5. Superpowers — Gemini extension
+# 6. Superpowers — Gemini extension
 # ─────────────────────────────────────────────
 Write-Step "Installing Superpowers for Gemini CLI"
 
@@ -161,7 +240,7 @@ if (Get-Command gemini -ErrorAction SilentlyContinue) {
 }
 
 # ─────────────────────────────────────────────
-# 6. bkit — platform-specific extensions
+# 7. bkit — platform-specific extensions
 #    bkit-gemini  : gemini extensions install
 #    bkit-codex   : download install.ps1 and run with --global
 #    bkit-claude-code: requires in-session commands (see below)
@@ -195,7 +274,7 @@ try {
 }
 
 # ─────────────────────────────────────────────
-# 7. Print manual steps (Claude Code plugins)
+# 8. Print manual steps (Claude Code plugins)
 # ─────────────────────────────────────────────
 $border = "=" * 70
 Write-Host ""

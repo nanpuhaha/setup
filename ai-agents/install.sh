@@ -49,7 +49,70 @@ fi
 success "Node.js $(node --version) and Git $(git --version | awk '{print $3}') found"
 
 # ─────────────────────────────────────────────
-# 1. AI CLI Tools
+# 1. Centralized .agents home and tool links
+# ─────────────────────────────────────────────
+step "Preparing centralized .agents home"
+
+AGENTS_HOME="${HOME}/.agents"
+AGENTS_SKILLS_DIR="${AGENTS_HOME}/skills"
+AGENTS_MD="${AGENTS_HOME}/AGENTS.md"
+mkdir -p "${AGENTS_SKILLS_DIR}"
+
+if [ ! -f "${AGENTS_MD}" ]; then
+    cat > "${AGENTS_MD}" <<'EOF'
+# AGENTS
+
+이 파일과 `skills/` 폴더를 기준으로 AI 에이전트 설정을 중앙 관리합니다.
+
+- 공용 스킬: `~/.agents/skills`
+- 도구별 홈: `~/.agents/{codex,gemini,claude,copilot,antigravity}`
+EOF
+    success "Created ${AGENTS_MD}"
+else
+    success "AGENTS.md already exists (${AGENTS_MD})"
+fi
+
+ensure_tool_link() {
+    local tool="$1"
+    local link_path="${HOME}/.${tool}"
+    local target_path="${AGENTS_HOME}/${tool}"
+    local target_parent
+    target_parent="$(dirname "${target_path}")"
+    mkdir -p "${target_parent}"
+
+    if [ -L "${link_path}" ]; then
+        local current_target
+        current_target="$(readlink "${link_path}")"
+        if [ "${current_target}" = "${target_path}" ]; then
+            success "${link_path} already links to ${target_path}"
+            mkdir -p "${target_path}"
+            return
+        fi
+        rm -f "${link_path}"
+    elif [ -e "${link_path}" ]; then
+        if [ ! -e "${target_path}" ]; then
+            mv "${link_path}" "${target_path}"
+            success "Migrated ${link_path} to ${target_path}"
+        else
+            local backup_path="${link_path}.backup-$(date +%Y%m%d%H%M%S)"
+            mv "${link_path}" "${backup_path}"
+            warn "Moved existing ${link_path} to ${backup_path} (target already exists)"
+        fi
+    fi
+
+    mkdir -p "${target_path}"
+    ln -s "${target_path}" "${link_path}"
+    success "Linked ${link_path} → ${target_path}"
+}
+
+ensure_tool_link "codex"
+ensure_tool_link "gemini"
+ensure_tool_link "claude"
+ensure_tool_link "copilot"
+ensure_tool_link "antigravity"
+
+# ─────────────────────────────────────────────
+# 2. AI CLI Tools
 # ─────────────────────────────────────────────
 step "Installing AI Agent CLI Tools"
 
@@ -77,7 +140,7 @@ else
 fi
 
 # ─────────────────────────────────────────────
-# 2. oh-my-claudecode & oh-my-codex (npm)
+# 3. oh-my-claudecode & oh-my-codex (npm)
 # ─────────────────────────────────────────────
 step "Installing oh-my-claudecode and oh-my-codex"
 
@@ -90,7 +153,7 @@ npm install -g oh-my-codex@latest
 success "oh-my-codex installed"
 
 # ─────────────────────────────────────────────
-# 3. GSD — Get Shit Done
+# 4. GSD — Get Shit Done
 #    v1 (get-shit-done): prompt framework for Claude Code, Gemini, Codex, etc.
 #      --all --global  installs for all runtimes non-interactively
 #    v2 (gsd-2): standalone TypeScript CLI agent built on Pi SDK
@@ -109,13 +172,13 @@ npm install -g gsd-pi@latest
 success "GSD v2 installed"
 
 # ─────────────────────────────────────────────
-# 4. Superpowers — Codex (git clone + symlink)
+# 5. Superpowers — Codex (git clone + symlink)
 #    Claude Code & Gemini require in-session commands (see below)
 # ─────────────────────────────────────────────
 step "Installing Superpowers for Codex"
 
-SUPERPOWERS_DIR="${HOME}/.codex/superpowers"
-SKILLS_DIR="${HOME}/.agents/skills"
+SUPERPOWERS_DIR="${AGENTS_HOME}/codex/superpowers"
+SKILLS_DIR="${AGENTS_SKILLS_DIR}"
 
 if [ -d "${SUPERPOWERS_DIR}" ]; then
     info "Updating existing Superpowers installation..."
@@ -136,7 +199,7 @@ else
 fi
 
 # ─────────────────────────────────────────────
-# 5. Superpowers — Gemini extension
+# 6. Superpowers — Gemini extension
 # ─────────────────────────────────────────────
 step "Installing Superpowers for Gemini CLI"
 
@@ -150,7 +213,7 @@ else
 fi
 
 # ─────────────────────────────────────────────
-# 6. bkit — platform-specific extensions
+# 7. bkit — platform-specific extensions
 #    bkit-gemini  : gemini extensions install
 #    bkit-codex   : curl | bash --global (installs to ~/.bkit-codex + ~/.agents/skills/)
 #    bkit-claude-code: requires in-session commands (see below)
@@ -173,7 +236,7 @@ curl -fsSL https://raw.githubusercontent.com/popup-studio-ai/bkit-codex/main/ins
 success "bkit-codex installed globally"
 
 # ─────────────────────────────────────────────
-# 7. Print manual steps (Claude Code plugins)
+# 8. Print manual steps (Claude Code plugins)
 # ─────────────────────────────────────────────
 echo ""
 echo -e "${BOLD}╔══════════════════════════════════════════════════════════════════╗${RESET}"
