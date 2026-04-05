@@ -94,7 +94,7 @@ ensure_tool_link() {
             mv "${link_path}" "${target_path}"
             success "Migrated ${link_path} to ${target_path}"
         else
-            local backup_path="${link_path}.backup-$(date +%Y%m%d%H%M%S)"
+            local backup_path="${link_path}.backup-$(date +%Y%m%d%H%M%S)-$$"
             mv "${link_path}" "${backup_path}"
             warn "Moved existing ${link_path} to ${backup_path} (target already exists)"
         fi

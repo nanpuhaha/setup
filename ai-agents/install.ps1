@@ -96,7 +96,7 @@ function Ensure-ToolLink {
                 Move-Item -LiteralPath $linkPath -Destination $targetPath -Force
                 Write-Ok "Migrated $linkPath to $targetPath"
             } else {
-                $backupPath = "$linkPath.backup-$(Get-Date -Format 'yyyyMMddHHmmss')"
+                $backupPath = "$linkPath.backup-$(Get-Date -Format 'yyyyMMddHHmmssfff')"
                 Move-Item -LiteralPath $linkPath -Destination $backupPath -Force
                 Write-Warn "Moved existing $linkPath to $backupPath (target already exists)"
             }
