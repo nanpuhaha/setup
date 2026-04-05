@@ -72,16 +72,46 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ## 설치 단계별 설명
 
+### 중앙 관리 구조 (`~/.agents`)
+
+설치 스크립트는 `~/.agents`를 기준으로 에이전트 설정을 통합 관리합니다.
+
+- `~/.agents/AGENTS.md` 자동 생성
+- `~/.agents/skills` 자동 생성
+- 아래 경로를 `~/.agents/<tool>`로 링크/정션 처리:
+  - `~/.codex` → `~/.agents/codex`
+  - `~/.gemini` → `~/.agents/gemini`
+  - `~/.claude` → `~/.agents/claude`
+  - `~/.copilot` → `~/.agents/copilot`
+  - `~/.antigravity` → `~/.agents/antigravity`
+
+기존 폴더가 있으면 가능한 경우 `~/.agents/<tool>`로 이동(migrate) 후 링크를 생성합니다.
+
 ### 자동 설치 항목 (스크립트로 자동 처리)
 
 1. **CLI 도구** — npm 글로벌 패키지로 설치
 2. **oh-my-claudecode / oh-my-codex** — npm 글로벌 패키지로 설치
 3. **GSD v1** — `npx get-shit-done-cc@latest --all --global` 실행 (모든 런타임에 설치, 비인터랙티브)
 4. **GSD v2** — `npm install -g gsd-pi@latest` 실행 (독립형 CLI 에이전트)
-5. **Superpowers (Codex용)** — `~/.codex/superpowers`에 클론 후 `~/.agents/skills/` 심볼릭 링크를 생성
+5. **Superpowers (Codex용)** — `~/.agents/codex/superpowers`에 클론 후 `~/.agents/skills/` 심볼릭 링크를 생성
 6. **Superpowers (Gemini용)** — `gemini extensions install` 실행
 7. **bkit-gemini** — `gemini extensions install` 실행
 8. **bkit-codex** — `install.sh --global` 실행 (`~/.bkit-codex` + `~/.agents/skills/` 에 설치)
+
+### 링크로 통합 불가한 플러그인/확장 (별도 설치)
+
+아래 항목은 구조상 `~/.agents` 링크만으로 설치/활성화가 완료되지 않으므로, 각 도구 내 명령으로 별도 설치가 필요합니다.
+
+1. **Claude Code Plugin Marketplace 기반 플러그인**
+   - Superpowers (Claude)
+   - bkit (Claude)
+   - claude-hud
+   - oh-my-claudecode (plugin mode)
+2. **Gemini Extensions 명령 기반 확장**
+   - Superpowers (Gemini)
+   - bkit-gemini
+3. **프로젝트 단위 설치 도구**
+   - BMAD Method (`npx bmad-method install ...`)
 
 ### 수동 설치 항목 (Claude Code 내에서 실행)
 
@@ -163,7 +193,7 @@ npm install -g gsd-pi@latest
 # 또는 세션 내에서: /gsd update
 
 # Superpowers 업데이트 (Codex용)
-git -C ~/.codex/superpowers pull
+git -C ~/.agents/codex/superpowers pull
 
 # bkit-codex 업데이트
 curl -fsSL https://raw.githubusercontent.com/popup-studio-ai/bkit-codex/main/install.sh | bash -s -- --global
