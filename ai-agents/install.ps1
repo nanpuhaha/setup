@@ -57,14 +57,14 @@ if (-not (Test-Path $AgentsSkillsDir)) {
 }
 
 if (-not (Test-Path $AgentsMd)) {
-    @"
+@'
 # AGENTS
 
 이 파일과 `skills/` 폴더를 기준으로 AI 에이전트 설정을 중앙 관리합니다.
 
 - 공용 스킬: `~/.agents/skills`
 - 도구별 홈: `~/.agents/{codex,gemini,claude,copilot,antigravity}`
-"@ | Set-Content -Path $AgentsMd -Encoding UTF8
+'@ | Set-Content -Path $AgentsMd -Encoding UTF8
     Write-Ok "Created $AgentsMd"
 } else {
     Write-Ok "AGENTS.md already exists ($AgentsMd)"
