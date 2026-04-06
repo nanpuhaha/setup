@@ -97,61 +97,25 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 6. **Superpowers (Gemini용)** — `gemini extensions install` 실행
 7. **bkit-gemini** — `gemini extensions install` 실행
 8. **bkit-codex** — `install.sh --global` 실행 (`~/.bkit-codex` + `~/.agents/skills/` 에 설치)
+9. **Claude Code 플러그인** — `claude plugin marketplace add` + `claude plugin install` 실행 (세션 밖에서 자동 처리)
+   - Superpowers (`obra/superpowers-marketplace`)
+   - bkit (`popup-studio-ai/bkit-claude-code`)
+   - Claude HUD (`jarrodwatts/claude-hud`)
+   - oh-my-claudecode (`Yeachan-Heo/oh-my-claudecode`)
 
-### 링크로 통합 불가한 플러그인/확장 (별도 설치)
+### 세션 내 실행이 필요한 초기 설정 (일회성)
 
-아래 항목은 구조상 `~/.agents` 링크만으로 설치/활성화가 완료되지 않으므로, 각 도구 내 명령으로 별도 설치가 필요합니다.
-
-1. **Claude Code Plugin Marketplace 기반 플러그인**
-   - Superpowers (Claude)
-   - bkit (Claude)
-   - claude-hud
-   - oh-my-claudecode (plugin mode)
-2. **Gemini Extensions 명령 기반 확장**
-   - Superpowers (Gemini)
-   - bkit-gemini
-3. **프로젝트 단위 설치 도구**
-   - BMAD Method (`npx bmad-method install ...`)
-
-### 수동 설치 항목 (Claude Code 내에서 실행)
-
-Claude Code를 열고 아래 명령어를 입력하세요:
-
-#### Superpowers
+아래 명령은 플러그인 설치 후 Claude Code 세션 **안에서** 한 번만 실행하면 됩니다:
 
 ```
-/plugin marketplace add obra/superpowers-marketplace
-/plugin install superpowers@superpowers-marketplace
-```
-
-#### bkit
-
-```
-/plugin marketplace add popup-studio-ai/bkit-claude-code
-/plugin install bkit
-```
-
-#### Claude HUD
-
-```
-/plugin marketplace add jarrodwatts/claude-hud
-/plugin install claude-hud
 /claude-hud:setup
-```
-
-> **Linux 사용자:** `/tmp`가 별도 파일시스템인 경우 아래와 같이 실행하세요:
-> ```bash
-> mkdir -p ~/.cache/tmp && TMPDIR=~/.cache/tmp claude
-> ```
-> 그 후 Claude Code 세션에서 설치 명령어를 실행하세요.
-
-#### oh-my-claudecode (플러그인 모드)
-
-```
-/plugin marketplace add https://github.com/Yeachan-Heo/oh-my-claudecode
-/plugin install oh-my-claudecode
 /omc-setup
 ```
+
+### 별도 설치가 필요한 항목
+
+- **Gemini Extensions** (Superpowers, bkit-gemini) — `gemini` 인증 후 자동 처리됨
+- **프로젝트 단위 설치 도구** — BMAD Method (`npx bmad-method install ...`)
 
 ### BMAD Method (프로젝트별 설치)
 

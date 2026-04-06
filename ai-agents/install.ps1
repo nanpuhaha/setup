@@ -274,31 +274,55 @@ try {
 }
 
 # ─────────────────────────────────────────────
-# 8. Print manual steps (Claude Code plugins)
+# 8. Claude Code plugins (via CLI, outside session)
+# ─────────────────────────────────────────────
+Write-Step "Installing Claude Code plugins"
+
+if (Get-Command claude -ErrorAction SilentlyContinue) {
+    function Install-ClaudePlugin {
+        param(
+            [string]$Marketplace,
+            [string]$Plugin,
+            [string]$Label
+        )
+        Write-Info "Adding marketplace for $Label..."
+        try { claude plugin marketplace add $Marketplace } catch { Write-Warn "Marketplace add failed: $_" }
+        Write-Info "Installing $Label plugin..."
+        try {
+            claude plugin install $Plugin --yes
+        } catch {
+            Write-Warn "Retrying without --yes flag..."
+            try { claude plugin install $Plugin } catch { Write-Warn "Plugin install failed: $_" }
+        }
+        Write-Ok "$Label plugin installed"
+    }
+
+    Install-ClaudePlugin -Marketplace "obra/superpowers-marketplace" `
+        -Plugin "superpowers@superpowers-marketplace" -Label "Superpowers"
+    Install-ClaudePlugin -Marketplace "popup-studio-ai/bkit-claude-code" `
+        -Plugin "bkit" -Label "bkit"
+    Install-ClaudePlugin -Marketplace "jarrodwatts/claude-hud" `
+        -Plugin "claude-hud" -Label "Claude HUD"
+    Install-ClaudePlugin -Marketplace "https://github.com/Yeachan-Heo/oh-my-claudecode" `
+        -Plugin "oh-my-claudecode" -Label "oh-my-claudecode"
+} else {
+    Write-Warn "claude command not found — skipping Claude Code plugin installation"
+    Write-Warn "Re-run this script after installing and authenticating Claude Code"
+}
+
+# ─────────────────────────────────────────────
+# 9. Print remaining manual steps (in-session commands)
 # ─────────────────────────────────────────────
 $border = "=" * 70
 Write-Host ""
 Write-Host $border -ForegroundColor Cyan
-Write-Host "  Claude Code Plugin Setup  (run inside Claude Code)" -ForegroundColor Cyan
+Write-Host "  Claude Code — Run these once inside a Claude Code session" -ForegroundColor Cyan
 Write-Host $border -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  # Superpowers" -ForegroundColor White
-Write-Host "  /plugin marketplace add obra/superpowers-marketplace" -ForegroundColor Yellow
-Write-Host "  /plugin install superpowers@superpowers-marketplace" -ForegroundColor Yellow
-Write-Host ""
-Write-Host "  # bkit" -ForegroundColor White
-Write-Host "  /plugin marketplace add popup-studio-ai/bkit-claude-code" -ForegroundColor Yellow
-Write-Host "  /plugin install bkit" -ForegroundColor Yellow
-Write-Host ""
-Write-Host "  # Claude HUD" -ForegroundColor White
-Write-Host "  winget install OpenJS.NodeJS.LTS  # if Node not found during setup" -ForegroundColor DarkGray
-Write-Host "  /plugin marketplace add jarrodwatts/claude-hud" -ForegroundColor Yellow
-Write-Host "  /plugin install claude-hud" -ForegroundColor Yellow
+Write-Host "  # Claude HUD initial setup" -ForegroundColor White
 Write-Host "  /claude-hud:setup" -ForegroundColor Yellow
 Write-Host ""
-Write-Host "  # oh-my-claudecode (plugin mode)" -ForegroundColor White
-Write-Host "  /plugin marketplace add https://github.com/Yeachan-Heo/oh-my-claudecode" -ForegroundColor Yellow
-Write-Host "  /plugin install oh-my-claudecode" -ForegroundColor Yellow
+Write-Host "  # oh-my-claudecode initial setup" -ForegroundColor White
 Write-Host "  /omc-setup" -ForegroundColor Yellow
 Write-Host ""
 Write-Host $border -ForegroundColor Cyan

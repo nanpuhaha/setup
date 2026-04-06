@@ -236,29 +236,47 @@ curl -fsSL https://raw.githubusercontent.com/popup-studio-ai/bkit-codex/main/ins
 success "bkit-codex installed globally"
 
 # ─────────────────────────────────────────────
-# 8. Print manual steps (Claude Code plugins)
+# 8. Claude Code plugins (via CLI, outside session)
+# ─────────────────────────────────────────────
+step "Installing Claude Code plugins"
+
+if command -v claude &>/dev/null; then
+    install_claude_plugin() {
+        local marketplace="$1"
+        local plugin="$2"
+        local label="$3"
+        info "Adding marketplace for ${label}..."
+        claude plugin marketplace add "${marketplace}" || true
+        info "Installing ${label} plugin..."
+        claude plugin install "${plugin}" --yes || claude plugin install "${plugin}" || true
+        success "${label} plugin installed"
+    }
+
+    install_claude_plugin "obra/superpowers-marketplace" \
+        "superpowers@superpowers-marketplace" "Superpowers"
+    install_claude_plugin "popup-studio-ai/bkit-claude-code" \
+        "bkit" "bkit"
+    install_claude_plugin "jarrodwatts/claude-hud" \
+        "claude-hud" "Claude HUD"
+    install_claude_plugin "https://github.com/Yeachan-Heo/oh-my-claudecode" \
+        "oh-my-claudecode" "oh-my-claudecode"
+else
+    warn "claude command not found — skipping Claude Code plugin installation"
+    warn "Re-run this script after installing and authenticating Claude Code"
+fi
+
+# ─────────────────────────────────────────────
+# 9. Print remaining manual steps (in-session commands)
 # ─────────────────────────────────────────────
 echo ""
 echo -e "${BOLD}╔══════════════════════════════════════════════════════════════════╗${RESET}"
-echo -e "${BOLD}║          Claude Code Plugin Setup  (run inside Claude Code)      ║${RESET}"
+echo -e "${BOLD}║     Claude Code — Run these once inside a Claude Code session    ║${RESET}"
 echo -e "${BOLD}╠══════════════════════════════════════════════════════════════════╣${RESET}"
 echo -e "${BOLD}║                                                                  ║${RESET}"
-echo -e "${BOLD}║  # Superpowers                                                   ║${RESET}"
-echo -e "${BOLD}║  /plugin marketplace add obra/superpowers-marketplace            ║${RESET}"
-echo -e "${BOLD}║  /plugin install superpowers@superpowers-marketplace             ║${RESET}"
-echo -e "${BOLD}║                                                                  ║${RESET}"
-echo -e "${BOLD}║  # bkit                                                          ║${RESET}"
-echo -e "${BOLD}║  /plugin marketplace add popup-studio-ai/bkit-claude-code        ║${RESET}"
-echo -e "${BOLD}║  /plugin install bkit                                            ║${RESET}"
-echo -e "${BOLD}║                                                                  ║${RESET}"
-echo -e "${BOLD}║  # Claude HUD                                                    ║${RESET}"
-echo -e "${BOLD}║  /plugin marketplace add jarrodwatts/claude-hud                  ║${RESET}"
-echo -e "${BOLD}║  /plugin install claude-hud                                      ║${RESET}"
+echo -e "${BOLD}║  # Claude HUD initial setup                                      ║${RESET}"
 echo -e "${BOLD}║  /claude-hud:setup                                               ║${RESET}"
 echo -e "${BOLD}║                                                                  ║${RESET}"
-echo -e "${BOLD}║  # oh-my-claudecode (plugin mode)                               ║${RESET}"
-echo -e "${BOLD}║  /plugin marketplace add https://github.com/Yeachan-Heo/oh-my-claudecode  ║${RESET}"
-echo -e "${BOLD}║  /plugin install oh-my-claudecode                               ║${RESET}"
+echo -e "${BOLD}║  # oh-my-claudecode initial setup                               ║${RESET}"
 echo -e "${BOLD}║  /omc-setup                                                      ║${RESET}"
 echo -e "${BOLD}║                                                                  ║${RESET}"
 echo -e "${BOLD}╚══════════════════════════════════════════════════════════════════╝${RESET}"
