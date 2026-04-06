@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # AI Agent Setup Script for macOS and Ubuntu
 # Installs: Claude Code, Gemini CLI, GitHub Copilot CLI, Codex CLI
-# Extensions: superpowers, bmad, bkit (claude-code/gemini/codex),
+# Extensions: superpowers (via skm), bmad, bkit (claude-code/gemini/codex),
 #             oh-my-claudecode, oh-my-codex, claude-hud, GSD v1 & v2
 
 set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 BOLD="\033[1m"
 GREEN="\033[0;32m"
@@ -47,6 +49,19 @@ if ! command -v git &>/dev/null; then
 fi
 
 success "Node.js $(node --version) and Git $(git --version | awk '{print $3}') found"
+
+if ! command -v uv &>/dev/null; then
+    info "uv not found. Installing uv..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    export PATH="${HOME}/.local/bin:${PATH}"
+fi
+
+if ! command -v uv &>/dev/null; then
+    error "uv installation failed. Please install uv manually: https://docs.astral.sh/uv/"
+    exit 1
+fi
+
+success "uv $(uv --version) found"
 
 # ─────────────────────────────────────────────
 # 1. Centralized .agents home and tool links
@@ -172,34 +187,36 @@ npm install -g gsd-pi@latest
 success "GSD v2 installed"
 
 # ─────────────────────────────────────────────
-# 5. Superpowers — Codex (git clone + symlink)
-#    Claude Code & Gemini require in-session commands (see below)
+# 5. skm — Skill Manager
+#    Installs skm-cli via uv and deploys skills.yaml to ~/.config/skm/
+#    Manages Superpowers (standard, claude, codex agents)
+#    Note: Gemini is not a known skm agent; handled separately below
 # ─────────────────────────────────────────────
-step "Installing Superpowers for Codex"
+step "Installing skm (Skill Manager)"
 
-SUPERPOWERS_DIR="${AGENTS_HOME}/codex/superpowers"
-SKILLS_DIR="${AGENTS_SKILLS_DIR}"
+info "Installing skm-cli via uv..."
+uv tool install skm-cli
+export PATH="${HOME}/.local/bin:${PATH}"
+success "skm installed"
 
-if [ -d "${SUPERPOWERS_DIR}" ]; then
-    info "Updating existing Superpowers installation..."
-    git -C "${SUPERPOWERS_DIR}" pull --rebase --quiet
-    success "Superpowers updated (${SUPERPOWERS_DIR})"
+SKM_CONFIG_DIR="${HOME}/.config/skm"
+SKM_CONFIG_FILE="${SKM_CONFIG_DIR}/skills.yaml"
+mkdir -p "${SKM_CONFIG_DIR}"
+
+if [ ! -f "${SKM_CONFIG_FILE}" ]; then
+    cp "${SCRIPT_DIR}/skills.yaml" "${SKM_CONFIG_FILE}"
+    success "Deployed skills.yaml to ${SKM_CONFIG_FILE}"
 else
-    info "Cloning Superpowers into ${SUPERPOWERS_DIR}..."
-    git clone --quiet https://github.com/obra/superpowers.git "${SUPERPOWERS_DIR}"
-    success "Superpowers cloned"
+    success "skills.yaml already exists at ${SKM_CONFIG_FILE}"
 fi
 
-mkdir -p "${SKILLS_DIR}"
-if [ ! -L "${SKILLS_DIR}/superpowers" ]; then
-    ln -s "${SUPERPOWERS_DIR}/skills" "${SKILLS_DIR}/superpowers"
-    success "Symlink created: ${SKILLS_DIR}/superpowers → ${SUPERPOWERS_DIR}/skills"
-else
-    success "Superpowers symlink already exists"
-fi
+info "Running skm install..."
+skm install
+success "Skills installed via skm"
 
 # ─────────────────────────────────────────────
 # 6. Superpowers — Gemini extension
+#    Gemini is not a known skm agent; install via gemini extensions
 # ─────────────────────────────────────────────
 step "Installing Superpowers for Gemini CLI"
 

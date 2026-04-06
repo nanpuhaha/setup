@@ -1,11 +1,13 @@
 # AI Agent Setup Script for Windows (PowerShell)
 # Installs: Claude Code, Gemini CLI, GitHub Copilot CLI, Codex CLI
-# Extensions: superpowers, bmad, bkit (claude-code/gemini/codex),
+# Extensions: superpowers (via skm), bmad, bkit (claude-code/gemini/codex),
 #             oh-my-claudecode, oh-my-codex, claude-hud, GSD v1 & v2
 
 #Requires -Version 5.1
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Continue"   # Don't abort on non-fatal errors
+
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 function Write-Step   { Write-Host "`n━━━ $args ━━━" -ForegroundColor Cyan }
 function Write-Info   { Write-Host "[INFO] $args" -ForegroundColor White }
@@ -42,6 +44,20 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
 }
 
 Write-Ok "Node.js $(node --version) and Git found"
+
+if (-not (Get-Command uv -ErrorAction SilentlyContinue)) {
+    Write-Info "uv not found. Installing uv..."
+    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+    $env:PATH = "$env:USERPROFILE\.local\bin;$env:PATH"
+    $env:PATH = "$env:USERPROFILE\.cargo\bin;$env:PATH"
+}
+
+if (-not (Get-Command uv -ErrorAction SilentlyContinue)) {
+    Write-Err "uv installation failed. Please install uv manually: https://docs.astral.sh/uv/"
+    exit 1
+}
+
+Write-Ok "uv $(uv --version) found"
 
 # ─────────────────────────────────────────────
 # 1. Centralized .agents home and tool links
@@ -190,39 +206,39 @@ npm install -g gsd-pi@latest
 Write-Ok "GSD v2 installed"
 
 # ─────────────────────────────────────────────
-# 5. Superpowers — Codex (git clone + junction)
-#    Claude Code & Gemini require in-session commands (see below)
+# 5. skm — Skill Manager
+#    Installs skm-cli via uv and deploys skills.yaml to ~/.config/skm/
+#    Manages Superpowers (standard, claude, codex agents)
+#    Note: Gemini is not a known skm agent; handled separately below
 # ─────────────────────────────────────────────
-Write-Step "Installing Superpowers for Codex"
+Write-Step "Installing skm (Skill Manager)"
 
-$SuperpowersDir = "$AgentsHome\codex\superpowers"
-$SkillsDir      = $AgentsSkillsDir
+Write-Info "Installing skm-cli via uv..."
+uv tool install skm-cli
+$env:PATH = "$env:USERPROFILE\.local\bin;$env:PATH"
+Write-Ok "skm installed"
 
-if (Test-Path $SuperpowersDir) {
-    Write-Info "Updating existing Superpowers installation..."
-    git -C $SuperpowersDir pull --rebase --quiet
-    Write-Ok "Superpowers updated ($SuperpowersDir)"
+$SkmConfigDir  = "$env:USERPROFILE\.config\skm"
+$SkmConfigFile = "$SkmConfigDir\skills.yaml"
+
+if (-not (Test-Path $SkmConfigDir)) {
+    New-Item -ItemType Directory -Force -Path $SkmConfigDir | Out-Null
+}
+
+if (-not (Test-Path $SkmConfigFile)) {
+    Copy-Item -Path "$ScriptDir\skills.yaml" -Destination $SkmConfigFile
+    Write-Ok "Deployed skills.yaml to $SkmConfigFile"
 } else {
-    Write-Info "Cloning Superpowers into $SuperpowersDir..."
-    git clone --quiet https://github.com/obra/superpowers.git $SuperpowersDir
-    Write-Ok "Superpowers cloned"
+    Write-Ok "skills.yaml already exists at $SkmConfigFile"
 }
 
-if (-not (Test-Path $SkillsDir)) {
-    New-Item -ItemType Directory -Force -Path $SkillsDir | Out-Null
-}
-
-$SkillsLink = "$SkillsDir\superpowers"
-if (-not (Test-Path $SkillsLink)) {
-    # Use junction (works without Developer Mode on Windows)
-    cmd /c mklink /J "$SkillsLink" "$SuperpowersDir\skills" | Out-Null
-    Write-Ok "Junction created: $SkillsLink -> $SuperpowersDir\skills"
-} else {
-    Write-Ok "Superpowers junction already exists"
-}
+Write-Info "Running skm install..."
+skm install
+Write-Ok "Skills installed via skm"
 
 # ─────────────────────────────────────────────
 # 6. Superpowers — Gemini extension
+#    Gemini is not a known skm agent; install via gemini extensions
 # ─────────────────────────────────────────────
 Write-Step "Installing Superpowers for Gemini CLI"
 

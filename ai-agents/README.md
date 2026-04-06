@@ -12,12 +12,13 @@
 | [Gemini CLI](https://github.com/google-gemini/gemini-cli) | Google의 AI 코딩 에이전트 | npm |
 | [OpenAI Codex CLI](https://github.com/openai/codex) | OpenAI의 AI 코딩 에이전트 | npm |
 | [GitHub Copilot CLI](https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line) | GitHub Copilot 명령줄 확장 | gh extension |
+| [skm](https://github.com/reorx/skm) | AI 에이전트 스킬 패키지 관리자 | uv tool |
 
 ### 확장 (Extensions / Plugins)
 
 | 도구 | 설명 | 대상 |
 |------|------|------|
-| [Superpowers](https://github.com/obra/superpowers) | TDD·계획·리뷰·디버깅 등 핵심 개발 워크플로우 스킬 모음 | Claude Code, Gemini, Codex |
+| [Superpowers](https://github.com/obra/superpowers) | TDD·계획·리뷰·디버깅 등 핵심 개발 워크플로우 스킬 모음 | skm (Claude Code, Codex, standard) / gemini extensions (Gemini) |
 | [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD) | AI 기반 애자일 개발 프레임워크 (12+ 전문 에이전트) | Claude Code (프로젝트별) |
 | [bkit (Claude Code)](https://github.com/popup-studio-ai/bkit-claude-code) | PDCA 방법론 기반 Context Engineering 프레임워크 (Claude Code용) | Claude Code |
 | [bkit (Gemini)](https://github.com/popup-studio-ai/bkit-gemini) | PDCA 방법론 기반 Context Engineering 프레임워크 (Gemini용) | Gemini |
@@ -67,6 +68,9 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 | Node.js 20+ | `brew install node` | `curl -fsSL https://deb.nodesource.com/setup_lts.x \| sudo -E bash - && sudo apt-get install -y nodejs` | `winget install OpenJS.NodeJS.LTS` |
 | Git | `brew install git` | `apt-get install git` | `winget install Git.Git` |
 | GitHub CLI (Copilot용) | `brew install gh` | `apt-get install gh` | `winget install GitHub.cli` |
+| uv | `brew install uv` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` | `powershell -c "irm https://astral.sh/uv/install.ps1 \| iex"` |
+
+> **uv**는 스크립트 실행 시 자동으로 설치를 시도합니다.
 
 ---
 
@@ -87,14 +91,32 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 기존 폴더가 있으면 가능한 경우 `~/.agents/<tool>`로 이동(migrate) 후 링크를 생성합니다.
 
+### skm (Skill Manager)
+
+[skm](https://github.com/reorx/skm)은 GitHub 저장소나 로컬 디렉토리에서 AI 에이전트 스킬 패키지를 관리하는 CLI 도구입니다.
+
+- **설정 파일**: `~/.config/skm/skills.yaml` (이 저장소의 `ai-agents/skills.yaml`에서 자동 배포)
+- **스킬 설치 대상**: `standard` (`~/.agents/skills/`), `claude` (`~/.claude/skills/`), `codex` (`~/.codex/skills/`)
+- skm으로 관리하는 패키지: **Superpowers** (`https://github.com/obra/superpowers`)
+
+`skills.yaml`을 수정하여 추가 스킬 패키지를 관리할 수 있습니다:
+
+```bash
+skm edit           # 에디터로 skills.yaml 편집
+skm install        # 스킬 설치 / 동기화
+skm check-updates  # 업데이트 확인
+skm list           # 설치된 스킬 목록
+```
+
 ### 자동 설치 항목 (스크립트로 자동 처리)
 
 1. **CLI 도구** — npm 글로벌 패키지로 설치
 2. **oh-my-claudecode / oh-my-codex** — npm 글로벌 패키지로 설치
 3. **GSD v1** — `npx get-shit-done-cc@latest --all --global` 실행 (모든 런타임에 설치, 비인터랙티브)
 4. **GSD v2** — `npm install -g gsd-pi@latest` 실행 (독립형 CLI 에이전트)
-5. **Superpowers (Codex용)** — `~/.agents/codex/superpowers`에 클론 후 `~/.agents/skills/` 심볼릭 링크를 생성
-6. **Superpowers (Gemini용)** — `gemini extensions install` 실행
+5. **skm 및 Superpowers 스킬** — `uv tool install skm-cli` 설치 후 `~/.config/skm/skills.yaml` 배포, `skm install` 실행
+   - Superpowers 스킬을 `standard` (`~/.agents/skills/`), `claude` (`~/.claude/skills/`), `codex` (`~/.codex/skills/`) 에이전트에 설치
+6. **Superpowers (Gemini용)** — `gemini extensions install` 실행 (Gemini는 skm 미지원)
 7. **bkit-gemini** — `gemini extensions install` 실행
 8. **bkit-codex** — `install.sh --global` 실행 (`~/.bkit-codex` + `~/.agents/skills/` 에 설치)
 
@@ -192,8 +214,13 @@ npx get-shit-done-cc@latest --all --global
 npm install -g gsd-pi@latest
 # 또는 세션 내에서: /gsd update
 
-# Superpowers 업데이트 (Codex용)
-git -C ~/.agents/codex/superpowers pull
+# skm 업데이트
+uv tool upgrade skm-cli
+
+# Superpowers 스킬 업데이트 (skm으로 관리)
+skm update superpowers
+# 또는 전체 스킬 재동기화
+skm install
 
 # bkit-codex 업데이트
 curl -fsSL https://raw.githubusercontent.com/popup-studio-ai/bkit-codex/main/install.sh | bash -s -- --global
