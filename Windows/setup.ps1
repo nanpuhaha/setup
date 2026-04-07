@@ -7,10 +7,10 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
 # Install Chocolatey and UniGetUI
 # Chocolatey: A package manager for Windows
-winget install --accept-package-agreements --accept-source-agreements --silent --exact Chocolatey.Chocolatey Chocolatey.ChocolateyGUI
+winget install --accept-package-agreements --accept-source-agreements --silent --source winget --exact Chocolatey.Chocolatey
 
 # UniGetUI: A GUI for managing packages installed via winget, scoop, and chocolatey
-winget install --accept-package-agreements --accept-source-agreements --silent --exact Chocolatey.Chocolatey Chocolatey.ChocolateyGUI MartiCliment.UniGetUI
+# winget install --accept-package-agreements --accept-source-agreements --silent --exact Chocolatey.Chocolatey Chocolatey.ChocolateyGUI MartiCliment.UniGetUI
 
 # Install Boxstarter
 # Boxstarter: A tool for repeatable, reboot resilient Windows environment installations
