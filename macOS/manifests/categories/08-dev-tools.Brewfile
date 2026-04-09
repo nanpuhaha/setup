@@ -1,0 +1,13 @@
+brew "docker"
+brew "docker-compose"
+brew "helm"
+brew "k9s"
+brew "kubernetes-cli"
+
+cask "android-commandlinetools"
+cask "cyberduck"
+cask "github"
+cask "mitmproxy"
+cask "postman"
+cask "postman-agent"
+cask "postman-cli"

@@ -1,0 +1,10 @@
+core
+cli
+languages
+terminals_editors
+browsers
+productivity
+collaboration
+ai_tools
+dev_tools
+system_tweaks

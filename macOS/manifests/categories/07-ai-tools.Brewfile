@@ -1,0 +1,10 @@
+brew "gemini-cli"
+
+cask "chatgpt"
+cask "claude"
+cask "claude-code"
+cask "codex"
+cask "codex-app"
+cask "copilot-cli"
+cask "github-copilot-for-xcode"
+cask "steipete/tap/codexbar"

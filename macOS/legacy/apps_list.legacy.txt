@@ -1,0 +1,198 @@
+/Applications/Google Chrome Beta.app
+/Applications/Multi Rename Tool.app
+/Applications/Jump Desktop.app
+/Applications/Jump Desktop Connect.app
+/Applications/Logi Options.app
+/Applications/전자도서관.app
+/Applications/DNSMonitor.app
+/Applications/Visual Studio Code.app
+/Applications/AnythingLLM.app
+/Applications/eCanCrusher.app
+/Applications/Ridibooks.app
+/Applications/Google Chrome Dev.app
+/Applications/Dadroit JSON Viewer.app
+/Applications/Vivaldi.app
+/Applications/Netiquette.app
+/Applications/KnockKnock.app
+/Applications/DockDoor.app
+/Applications/dupeguru.app
+/Applications/cmux.app
+/Applications/ScanSnap/PfuSsWifiTool.app
+/Applications/ScanSnap/ScanSnap Manager.app
+/Applications/ScanSnap/SupportTool.app
+/Applications/ScanSnap/SearchablePDFConverter.app
+/Applications/ScanSnap/Scan2Mobile.app
+/Applications/ScanSnap/ScanSnap Viewer.app
+/Applications/ScanSnap/ScanToMobileTrans.app
+/Applications/LuLu.app
+/Applications/Antigravity.app
+/Applications/MediaInfo.app
+/Applications/ColorWell.app
+/Applications/Mitmproxy Redirector.app
+/Applications/밀리의서재.app
+/Applications/Claude.app
+/Applications/전자도서관SEE.app
+/Applications/Raycast.app
+/Applications/Plexamp.app
+/Applications/Figma.app
+/Applications/Send Anywhere.app
+/Applications/Keka.app
+/Applications/Plex.app
+/Applications/ReiKey.app
+/Applications/Syncthing.app
+/Applications/Meld.app
+/Applications/Disk-O.app
+/Applications/Microsoft Defender Shim.app
+/Applications/Rectangle.app
+/Applications/Google Chrome.app
+/Applications/Anki.app
+/Applications/Karabiner-Elements.app
+/Applications/Karabiner-EventViewer.app
+/Applications/BlockBlock Helper.app
+/Applications/Dropbox.app
+/Applications/TaskExplorer.app
+/Applications/Visual Studio Code - Insiders.app
+/Applications/AionUi.app
+/Applications/IINA.app
+/Applications/KakaoTalk.app
+/Applications/Microsoft Edge Canary.app
+/Applications/Telegram.app
+/Applications/Notion.app
+/Applications/Reminders MenuBar.app
+/Applications/OverSight.app
+/Applications/Xcode.app
+/Applications/Colors.app
+/Applications/OneDrive.app
+/Applications/Notion Calendar.app
+/Applications/Warp.app
+/Applications/Cyberduck.app
+/Applications/coconutBattery.app
+/Applications/WebCatalog.app
+/Applications/Rambox.app
+/Applications/Simplenote.app
+/Applications/Hex Fiend.app
+/Applications/Free Download Manager.app
+/Applications/ExcalidrawZ.app
+/Applications/Mochi.app
+/Applications/DBeaver.app
+/Applications/Cursor.app
+/Applications/ScanSnapHomeMain.app
+/Applications/Scroll Reverser.app
+/Applications/DaisyDisk.app
+/Applications/경기도사이버도서관.app
+/Applications/Microsoft Word.app
+/Applications/Caesium Image Compressor.app
+/Applications/TouchCopy.app
+/Applications/MimikaStudio.app
+/Applications/OpenUsage.app
+/Applications/Beekeeper Studio.app
+/Applications/전자도서관SEE 2.app
+/Applications/Google Chrome Canary.app
+/Applications/MYBOX.app
+/Applications/교보도서관.app
+/Applications/Google Drive.app
+/Applications/Actions.app
+/Applications/Obsidian.app
+/Applications/NetNewsWire.app
+/Applications/Ferdium.app
+/Applications/Safari.app
+/Applications/Miro.app
+/Applications/Hancom Office HWP.app
+/Applications/Kiro CLI.app
+/Applications/Espanso.app
+/Applications/Tiny Wi-Fi Analyzer.app
+/Applications/OpenCode.app
+/Applications/Microsoft Excel.app
+/Applications/Windsurf.app
+/Applications/Xnapper.app
+/Applications/Utilities/LogiMgr Uninstaller.app
+/Applications/UTM.app
+/Applications/ChatGPT.app
+/Applications/calibre.app
+/Applications/zoom.us.app
+/Applications/Microsoft Outlook.app
+/Applications/GitHub Desktop.app
+/Applications/ProcessMonitor.app
+/Applications/Capacities.app
+/Applications/Downie 4.app
+/Applications/RustDesk.app
+/Applications/Glance.app
+/Applications/Malwarebytes.app
+/Applications/LibreOffice.app
+/Applications/CodexBar.app
+/Applications/Wireshark.app
+/Applications/Microsoft Edge Dev.app
+/Applications/Microsoft Edge Beta.app
+/Applications/교보eBook.app
+/Applications/Google Docs.app
+/Applications/예스24 전자도서관.app
+/Applications/GIMP.app
+/Applications/Codex.app
+/Applications/uBlock Origin Lite.app
+/Applications/SuperVoiceAssistant.app
+/Applications/iExplorer.app
+/Applications/알라딘구독도서관.app
+/Applications/Hammerspoon.app
+/Applications/Google Sheets.app
+/Applications/FastestVPN.app
+/Applications/.Karabiner-VirtualHIDDevice-Manager.app
+/Applications/Motrix.app
+/Applications/ClaudeBar.app
+/Applications/Brave Browser.app
+/Applications/Google Slides.app
+/Applications/Franz.app
+/Applications/3uTools.app
+/Applications/HeatMap.app
+/Applications/Plex Media Server.app
+/Applications/Hopper Disassembler.app
+/Applications/Proxyman.app
+/Applications/Qwen.app
+/Applications/Microsoft Edge.app
+/Applications/Postman Agent.app
+/Applications/Microsoft OneNote.app
+/Applications/Surge Dashboard.app
+/Applications/Ghostty.app
+/Applications/FileMonitor.app
+/Applications/FileZilla.app
+/Applications/KextViewr.app
+/Applications/iTerm.app
+/Applications/Marta.app
+/Applications/Goodnotes.app
+/Applications/AppCleaner.app
+/Applications/Surge.app
+/Applications/서울도서관 전자책 뷰어.app
+/Applications/Perplexity.app
+/Applications/Pikka.app
+/Applications/Firefox.app
+/Applications/AladinEbook.app
+/Applications/Readest.app
+/Applications/Stats.app
+/Applications/AltTab.app
+/Applications/Alfred 5.app
+/Applications/Postman.app
+/Applications/BODA.app
+/Applications/ImageOptim.app
+/Applications/OBS.app
+/Applications/Shapr3D.app
+/Applications/qView.app
+/Applications/Microsoft PowerPoint.app
+/Applications/Logseq.app
+/Applications/Pichon by Icons8.app
+/Applications/QLMarkdown.app
+/Applications/이씨오 범용뷰어.app
+/Applications/Superset.app
+/Applications/Mimestream.app
+/Applications/QuickRecorder.app
+/Applications/Microsoft Teams.app
+/Applications/Tailscale.app
+/Applications/Slack.app
+/Applications/GitHub Copilot for Xcode.app
+/Applications/VPN Unlimited®.app
+/Applications/Ice.app
+/Applications/전자책도서관.app
+/Applications/Whatting.app
+/Applications/Discord.app
+/Applications/Opera.app
+/Applications/VNC Viewer.app
+/Applications/Sublime Text.app
+/Applications/TextMate.app

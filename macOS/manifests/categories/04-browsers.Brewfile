@@ -1,0 +1,7 @@
+cask "brave-browser"
+cask "firefox"
+cask "google-chrome"
+cask "google-chrome@beta"
+cask "google-chrome@canary"
+cask "google-chrome@dev"
+cask "microsoft-edge"

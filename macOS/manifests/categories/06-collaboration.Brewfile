@@ -1,0 +1,6 @@
+cask "discord"
+cask "figma"
+cask "miro"
+cask "slack"
+cask "telegram"
+cask "zoom"

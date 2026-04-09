@@ -4,49 +4,83 @@ Development environment setup for macOS.
 
 ## Setup Instructions
 
-Run the following scripts to set up your environment:
+Main entrypoint:
 
-- **`brew_packages.sh`**: Installs applications and tools using Homebrew.
-  ```bash
-  ./brew_packages.sh
-  ```
-- **`zsh.sh`**: Configures Zsh shell environment.
+```bash
+./setup.sh
+```
 
----
+### Interactive Mode
+- tty 환경에서 `./setup.sh` 실행 시 카테고리 선택 TUI가 열립니다.
+- 키 조작:
+  - `↑/↓`: 이동
+  - `space`: 토글
+  - `enter`: 제출
+  - `a`: 전체 토글
+  - `q`: 종료
 
+### Silent / Non-interactive Mode
+
+```bash
+./setup.sh --silent
+```
+
+Default profile is `standard`.
+
+### Useful Options
+
+```bash
+./setup.sh --list-categories
+./setup.sh --profile minimal --silent
+./setup.sh --categories cli,browsers --dry-run
+```
+
+## Single Source of Truth
+
+- `manifests/categories.tsv`
+- `manifests/categories/*.Brewfile`
+- `manifests/profiles/{minimal,standard,full}.txt`
+
+`brew_packages.sh` is a compatibility wrapper and delegates to `setup.sh`.
+
+## Legacy Data Preservation
+
+Previous large package/app lists are preserved in:
+
+- `legacy/Brewfile.legacy`
+- `legacy/Brewfile2.legacy`
+- `legacy/apps_list.legacy.txt`
+- `legacy/brew_packages.legacy.sh`
+- `legacy/setup.legacy.sh`
+
+## Other Scripts
+
+- `zsh.sh`: Install Oh My Zsh
+- `theos.sh`: Install Theos
+- `espanso-packages.sh`: Install Espanso packages
 
 ### References
 
 - [Setting up Mac for development — notes from a Windows user](https://medium.com/@borekb/setting-up-mac-for-development-notes-from-a-windows-user-d4028535dc49)
 - [Ask GN: 매일 사용하는 추천 macOS앱을 알려주세요](https://news.hada.io/topic?id=15295)
 - [Ask HN: What macOS apps/programs do you use daily and recommend?](https://news.ycombinator.com/item?id=40627395)
+- [sourabhbajaj/mac-setup](https://sourabhbajaj.com/mac-setup/)
+- [nicolashery/mac-dev-setup](https://github.com/nicolashery/mac-dev-setup)
+- [CodingGarden/mac-setup](https://github.com/CodingGarden/mac-setup)
+- [bkuhlmann/mac_os-config](https://github.com/bkuhlmann/mac_os-config)
+- [donnemartin/dev-setup](https://github.com/donnemartin/dev-setup)
+- [bkuhlmann/mac_os](https://github.com/bkuhlmann/mac_os)
+- [wilsonmar/mac-setup](https://github.com/wilsonmar/mac-setup)
 
-- https://sourabhbajaj.com/mac-setup/
-- https://github.com/nicolashery/mac-dev-setup
-- https://github.com/CodingGarden/mac-setup
-- https://github.com/bkuhlmann/mac_os-config
-- https://github.com/donnemartin/dev-setup
-- https://github.com/bkuhlmann/mac_os
-- https://github.com/wilsonmar/mac-setup
+## Without Brew
 
-## Without brew
-
-
-- [Choosy](https://choosy.app) opens every link in the right browser
-
-- [Disk-O](https://www.widgetworx.com/apps/disko.html) menu bar disk free space <img width="80" alt="스크린샷 2024-08-09 오전 11 46 16" src="https://github.com/user-attachments/assets/2990896e-d25c-4eb0-a803-ea29939788e1">
-
-- [Manila](https://github.com/neilsardesai/Manila) A Finder extension for changing folder colors
-
-https://github.com/user-attachments/assets/3ad0bf1b-3ce9-40c9-9c84-79ace50e4e26
-
-- [FancyFolders](https://github.com/kfreitag1/FancyFolders) Creating custom folder icons from SF symbols, text, or images.
-
-- [Icons](https://github.com/SAP/macOS-icon-generator) Easiest way to create customized app icons
-
-- https://github.com/othyn/github-folder-icon-macOS
-- https://github.com/mklement0/fileicon
-- https://github.com/christianvmm/folderart
-- https://github.com/rikumi/iconsur
-- https://github.com/berkaayildiz/chromafolder
-
+- [Choosy](https://choosy.app): Open links in the right browser
+- [Disk-O](https://www.widgetworx.com/apps/disko.html): Menu bar disk free space
+- [Manila](https://github.com/neilsardesai/Manila): Finder extension for folder colors
+- [FancyFolders](https://github.com/kfreitag1/FancyFolders): Custom folder icons
+- [Icons](https://github.com/SAP/macOS-icon-generator): Customized app icons
+- [github-folder-icon-macOS](https://github.com/othyn/github-folder-icon-macOS)
+- [fileicon](https://github.com/mklement0/fileicon)
+- [folderart](https://github.com/christianvmm/folderart)
+- [iconsur](https://github.com/rikumi/iconsur)
+- [chromafolder](https://github.com/berkaayildiz/chromafolder)

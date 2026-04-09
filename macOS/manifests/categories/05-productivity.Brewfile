@@ -1,0 +1,7 @@
+cask "anki"
+cask "capacities"
+cask "logseq"
+cask "notion"
+cask "notion-calendar"
+cask "obsidian"
+cask "simplenote"

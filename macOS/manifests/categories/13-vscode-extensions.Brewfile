@@ -1,0 +1,5 @@
+vscode "amazonwebservices.codewhisperer-for-command-line-companion"
+vscode "anthropic.claude-code"
+vscode "bierner.markdown-preview-github-styles"
+vscode "github.copilot-chat"
+vscode "ms-python.python"

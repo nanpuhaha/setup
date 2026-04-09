@@ -1,0 +1,14 @@
+core	Core Foundation	manifests/categories/00-core.Brewfile	Homebrew 기본 탭/기반 유틸리티
+cli	CLI Utilities	manifests/categories/01-cli.Brewfile	터미널 중심 생산성 도구
+languages	Languages & Runtimes	manifests/categories/02-languages.Brewfile	Python/Node/Go/Rust 등 런타임
+terminals_editors	Terminals & Editors	manifests/categories/03-terminals-editors.Brewfile	터미널/에디터/IDE
+browsers	Browsers	manifests/categories/04-browsers.Brewfile	브라우저 및 웹 접근 도구
+productivity	Productivity	manifests/categories/05-productivity.Brewfile	노트/지식/업무 생산성 앱
+collaboration	Collaboration	manifests/categories/06-collaboration.Brewfile	메신저/회의/협업 앱
+ai_tools	AI Tools	manifests/categories/07-ai-tools.Brewfile	AI 관련 데스크톱/CLI 도구
+dev_tools	Developer Tools	manifests/categories/08-dev-tools.Brewfile	개발 보조 도구/컨테이너/API 툴
+system_tweaks	System Tweaks	manifests/categories/09-system-tweaks.Brewfile	윈도우 관리/입력/메뉴바/자동화
+media	Media & Utilities	manifests/categories/10-media.Brewfile	미디어/파일/시스템 유틸리티
+virtualization	Virtualization	manifests/categories/11-virtualization.Brewfile	가상화/컨테이너 앱
+mas_apps	Mac App Store Apps	manifests/categories/12-mas-apps.Brewfile	MAS 앱 설치(로그인 필요)
+vscode_extensions	VS Code Extensions	manifests/categories/13-vscode-extensions.Brewfile	VS Code 확장 설치
