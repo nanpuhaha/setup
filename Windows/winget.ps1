@@ -139,5 +139,7 @@ winget install `
     tailscale.tailscale
 
 # ---------------------------------------------------
+
+winget install --id Casey.Just --exact
 # Note: Some packages might be duplicates or conflicts.
 # Please double check existing installations.
