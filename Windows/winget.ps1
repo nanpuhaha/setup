@@ -176,6 +176,7 @@ winget install `
 
 # ---------------------------------------------------
 
+# Microsoft Store app ID: 9PLM9XGG6VKS
 winget install --exact --silent --accept-source-agreements --accept-package-agreements --source msstore 9PLM9XGG6VKS
 
 winget install --id Casey.Just --exact

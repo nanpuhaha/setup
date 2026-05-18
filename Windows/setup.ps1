@@ -119,4 +119,5 @@ winget install -e --silent --accept-source-agreements --accept-package-agreement
     Brave.Brave
 
 # Install Microsoft Store apps
+# Microsoft Store app ID: 9PLM9XGG6VKS
 winget install -e --silent --accept-source-agreements --accept-package-agreements --source msstore 9PLM9XGG6VKS
