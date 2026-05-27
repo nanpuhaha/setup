@@ -138,6 +138,9 @@ winget install `
     Canonical.Ubuntu `
     tailscale.tailscale
 
+# EnvStudio (Advanced Environment Variable Manager, Microsoft Store)
+winget install --id 9NL5SCXW3320 --source msstore --accept-package-agreements --accept-source-agreements
+
 # ---------------------------------------------------
 
 winget install --id Casey.Just --exact
