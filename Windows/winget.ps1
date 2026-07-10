@@ -146,3 +146,6 @@ winget install --id 9NL5SCXW3320 --source msstore --accept-package-agreements --
 winget install --id Casey.Just --exact
 # Note: Some packages might be duplicates or conflicts.
 # Please double check existing installations.
+
+winget install --id GnuWin32.Grep --accept-package-agreements --accept-source-agreements
+winget install --id BurntSushi.ripgrep.MSVC --accept-package-agreements --accept-source-agreements
