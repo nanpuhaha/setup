@@ -19,3 +19,20 @@ A fast image and texture viewer written in C++. Leverages the GPU for quick draw
 Sizer is a freeware utility that allows you to resize any window to an exact, predefined size. This is extremely useful when designing web pages, as it allows you to see how the page will look when viewed at a smaller size. The utility is also handy when compiling screen-shots for documentation, using Sizer allows you to easily maintain the same window size across screen grabs.
 
 ![](https://www.brianapps.net/sizer/sizerpopupmenu.png)
+
+### [Goose Desktop](https://goose-docs.ai/docs/getting-started/installation)
+
+Download: https://github.com/aaif-goose/goose/releases/download/stable/Goose-win32-x64.zip
+
+### Goose CLI
+
+Install script (WSL or Git Bash):
+`curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash`
+
+### [WizFile](https://www.diskanalyzer.com/wizfile)
+
+Similar to WizTree. Free for personal use.
+
+### [BinaryFortress FileSeek](https://www.binaryfortress.com/FileSeek/)
+
+Another file search alternative.
