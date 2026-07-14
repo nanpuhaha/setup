@@ -383,6 +383,10 @@ apply_post_install_tweaks() {
             fi
         fi
     fi
+
+    if [[ -d "/Applications/InstantSpaceSwitcher.app" ]]; then
+        xattr -cr /Applications/InstantSpaceSwitcher.app 2>/dev/null || true
+    fi
 }
 
 run_install() {
