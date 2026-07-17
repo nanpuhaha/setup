@@ -45,6 +45,9 @@ uv tool install ty             # Astral's new type checker (ruff team)
 # Debugging / reverse engineering
 uv tool install frida-tools==12.4.3 # frida 16.7.19; compatible with iOS frida 16.4.3
 
+# Document / Office
+uv tool install msoffcrypto-tool    # decrypt password-protected MS Office files (docx/xlsx/pptx)
+
 # Testing
 # uv tool install pytest
 
