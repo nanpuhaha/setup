@@ -1,4 +1,5 @@
 brew "gemini-cli"
+brew "herdr"
 
 cask "chatgpt"
 cask "claude"
