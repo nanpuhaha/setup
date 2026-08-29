@@ -82,8 +82,9 @@ profile_exists() {
 
 add_unique_selected() {
     local candidate="$1"
-    local id
-    for id in "${SELECTED_IDS[@]}"; do
+    local i id
+    for ((i = 0; i < ${#SELECTED_IDS[@]}; i++)); do
+        id="${SELECTED_IDS[$i]}"
         if [[ "$id" == "$candidate" ]]; then
             return 0
         fi
@@ -211,8 +212,9 @@ run_tui_selector() {
         selected[i]=0
     done
 
-    local preset idx
-    for preset in "${SELECTED_IDS[@]}"; do
+    local preset idx i
+    for ((i = 0; i < ${#SELECTED_IDS[@]}; i++)); do
+        preset="${SELECTED_IDS[$i]}"
         idx="$(get_category_index "$preset")" || continue
         selected[idx]=1
     done
@@ -315,7 +317,9 @@ build_combined_brewfile() {
         echo
     } > "$raw_file"
 
-    for selected_id in "${SELECTED_IDS[@]}"; do
+    local i
+    for ((i = 0; i < ${#SELECTED_IDS[@]}; i++)); do
+        selected_id="${SELECTED_IDS[$i]}"
         fragment="$(get_category_fragment_path "$selected_id")" || die "category not found: ${selected_id}"
         [[ -f "$fragment" ]] || die "fragment not found: ${fragment}"
         {
@@ -332,9 +336,10 @@ build_combined_brewfile() {
 
 print_execution_plan() {
     local brewfile_path="$1"
-    local id name
+    local id name i
     echo "Selected categories:"
-    for id in "${SELECTED_IDS[@]}"; do
+    for ((i = 0; i < ${#SELECTED_IDS[@]}; i++)); do
+        id="${SELECTED_IDS[$i]}"
         name="$(get_category_name "$id" || printf '%s' "$id")"
         printf '  - %s (%s)\n' "$id" "$name"
     done
