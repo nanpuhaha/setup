@@ -84,3 +84,5 @@ Previous large package/app lists are preserved in:
 - [folderart](https://github.com/christianvmm/folderart)
 - [iconsur](https://github.com/rikumi/iconsur)
 - [chromafolder](https://github.com/berkaayildiz/chromafolder)
+- [menu-bar-spacing](https://sindresorhus.com/menu-bar-spacing)
+- [MenuBarSpacing](https://github.com/beyondthecode-bc/MenuBarSpacing)
